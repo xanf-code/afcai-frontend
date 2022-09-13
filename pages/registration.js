@@ -1,21 +1,90 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Image from "next/image";
 import { Switch } from "@headlessui/react";
 import FinishSectionButton from "../components/FinishSectionButton";
+import REGISTER_MUTATION from "../graphql/mutations/registerMutation";
+import { useMutation } from "@apollo/client";
+import useImageStore from "../store/LogoImage";
 
-function registration() {
-  const STEPS_AMOUNT = 4;
+const STEPS_AMOUNT = 6;
 
+function Registration() {
   const [formStep, setFormStep] = useState(0);
   const [youthTeamToggle, setYouthTeamToggle] = useState(false);
   const [licensedCoachToggle, setlicensedCoachToggle] = useState(false);
+  const [selectedImage, setSelectedImage] = useState();
+  const [submitError, setSubmitError] = useState(null);
+
+  const [registerTeam] = useMutation(REGISTER_MUTATION, {
+    onError: (error) => {
+      console.log(error?.message);
+      setSubmitError(error?.message);
+    },
+  });
+
+  const imageSrc = useImageStore((state) => state.imageSrc);
+  const getLogo = useImageStore((state) => state.getLogo);
+
+  const createTeamHandler = (formValue) => {
+    registerTeam({
+      variables: {
+        teamName: formValue.teamName,
+        description: formValue.description,
+        teamLogo: imageSrc,
+        association: formValue.association,
+        email: formValue.email,
+        phone: formValue.phone,
+        website: formValue.website,
+        socials: {
+          facebook: formValue.facebook,
+          instagram: formValue.instagram,
+          twitter: formValue.twitter,
+          youtube: formValue.youtube,
+          linkedin: formValue.linkedin,
+        },
+        teamAbrieviation: formValue.teamAbrieviation,
+        personIncharge: formValue.personIncharge,
+        personType: formValue.personType,
+        postalCode: formValue.postalCode,
+        postalAddress: formValue.postalAddress,
+        teamType: formValue.teamType,
+        state: formValue.state,
+        district: formValue.district,
+        teamReputation: formValue.teamReputation,
+        disabledCatering: formValue.disabledCatering,
+        teamFounded: formValue.teamFounded,
+        teamAssociationLink: formValue.teamAssociationLink,
+        crsAccess: formValue.crsAccess,
+        seniorMensTeamStatus: formValue.seniorMensTeamStatus,
+        seniorWomensTeamStatus: formValue.seniorWomensTeamStatus,
+        academyType: formValue.academyType,
+        youthTeams: youthTeamToggle ? formValue.youthTeams : [],
+        licensedCoaches: licensedCoachToggle ? formValue.licensedCoaches : [],
+      },
+    });
+  };
+
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
+  async function handleImageUpload() {
+    if (!selectedImage) {
+      return;
+    }
+    const formData = new FormData();
+    formData.append("file", selectedImage);
+    formData.append("upload_preset", `${process.env.PRESET_NAME}`);
+
+    getLogo(formData);
+  }
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isDirty },
+    trigger,
+    formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
@@ -26,24 +95,34 @@ function registration() {
 
   const handleGoBackToPreviousStep = () => {
     setFormStep((cur) => cur - 1);
+    /**
+     * Trigger Team Name
+     * @description Triggers when the back arrow is pressed to preserve state
+     */
+    trigger("teamName");
   };
 
   const onSubmit = (values) => {
-    console.log(JSON.stringify(values, null, 2));
+    createTeamHandler(values);
+    handleStepCompletion();
+  };
+
+  const finalStep = () => {
+    handleImageUpload();
     handleStepCompletion();
   };
 
   return (
     <div className="min-h-screen flex flex-col items-start text-gray-900 relative">
       <div className="mx-auto z-10 mt-20 text-center">
-        <h1 className="text-black text-5xl font-semibold">
+        {/* <h1 className="text-black text-5xl font-semibold">
           Welcome to the Club
-        </h1>
+        </h1> */}
       </div>
       <div className="max-w-xl w-full mt-12 mb-24 mx-auto overflow-hidden z-10">
         <div className="px-16">
           <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-            {formStep < STEPS_AMOUNT && (
+            {formStep < STEPS_AMOUNT - 1 && (
               <div className="flex items-center font-medium mb-4">
                 {formStep > 0 && (
                   <button
@@ -66,7 +145,6 @@ function registration() {
                 Step {formStep + 1} of {STEPS_AMOUNT}
               </div>
             )}
-            {/* page - 1  */}
             {formStep >= 0 && (
               <section
                 className={`space-y-4 ${formStep === 0 ? "block" : "hidden"}`}
@@ -156,10 +234,6 @@ function registration() {
                       required: {
                         value: true,
                         message: "Person type is required",
-                      },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
                       },
                     })}
                     name="personType"
@@ -257,7 +331,6 @@ function registration() {
                 </FinishSectionButton>
               </section>
             )}
-            {/* Page - 2  */}
             {formStep >= 1 && (
               <section
                 className={`space-y-4 ${formStep === 1 ? "block" : "hidden"}`}
@@ -278,6 +351,7 @@ function registration() {
                         message: "Invalid email address",
                       },
                     })}
+                    defaultValue="darshan@gmail.com"
                     name="email"
                     placeholder="Please enter your email address"
                   />
@@ -303,6 +377,7 @@ function registration() {
                         message: "Invalid phone number",
                       },
                     })}
+                    defaultValue="9113991845"
                     name="phone"
                     placeholder="Please enter your phone number"
                   />
@@ -490,7 +565,6 @@ function registration() {
                 </FinishSectionButton>
               </section>
             )}
-            {/* Page - 3 */}
             {formStep >= 2 && (
               <section
                 className={`space-y-4 ${formStep === 2 ? "block" : "hidden"}`}
@@ -505,10 +579,6 @@ function registration() {
                       required: {
                         value: true,
                         message: "Team Type is required",
-                      },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
                       },
                     })}
                     name="teamType"
@@ -541,10 +611,6 @@ function registration() {
                       required: {
                         value: true,
                         message: "Team Reputation is required",
-                      },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
                       },
                     })}
                     name="teamReputation"
@@ -585,10 +651,6 @@ function registration() {
                         value: true,
                         message: "Team Association Link is required",
                       },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
-                      },
                     })}
                     name="teamAssociationLink"
                   >
@@ -612,10 +674,6 @@ function registration() {
                         value: true,
                         message: "Academy Type is required",
                       },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
-                      },
                     })}
                     name="academyType"
                   >
@@ -638,10 +696,6 @@ function registration() {
                       required: {
                         value: true,
                         message: "CRS Access is required",
-                      },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
                       },
                     })}
                     name="crsAccess"
@@ -667,10 +721,6 @@ function registration() {
                         value: true,
                         message: "Senior Mens Team Status is required",
                       },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
-                      },
                     })}
                     name="seniorMensTeamStatus"
                   >
@@ -695,10 +745,6 @@ function registration() {
                         value: true,
                         message: "Senior Womens Team Status is required",
                       },
-                      minLength: {
-                        value: 1,
-                        message: "Please select a value",
-                      },
                     })}
                     name="seniorWomensTeamStatus"
                   >
@@ -720,7 +766,6 @@ function registration() {
                 </FinishSectionButton>
               </section>
             )}
-            {/* Page - 4 */}
             {formStep >= 3 && (
               <section
                 className={`space-y-4 ${formStep === 3 ? "block" : "hidden"}`}
@@ -888,28 +933,80 @@ function registration() {
                     )}
                   </div>
                 </div>
+
+                <FinishSectionButton
+                  onClick={handleStepCompletion}
+                  isDisabled={!isValid}
+                >
+                  Next
+                </FinishSectionButton>
+              </section>
+            )}
+            {formStep >= 4 && (
+              <section
+                className={`space-y-4 ${formStep === 4 ? "block" : "hidden"}`}
+              >
                 <input
-                  disabled={!isValid}
+                  onChange={handleImageChange}
+                  accept=".jpg, .jpeg, .png"
+                  type="file"
+                ></input>
+
+                <FinishSectionButton
+                  onClick={finalStep}
+                  isDisabled={!selectedImage}
+                >
+                  Next
+                </FinishSectionButton>
+              </section>
+            )}
+            {formStep >= 5 && (
+              <section
+                className={`space-y-4 ${formStep === 5 ? "block" : "hidden"}`}
+              >
+                <h1>Terms and Conditions</h1>
+                <p className="text-gray-600">
+                  Please accept the Club / Academy named above as a member of
+                  the Association of Football Clubs & Academies in India. This
+                  application is unconditional and i/we authorise you to
+                  register me/us as a member. I/ we agree to be bound by the
+                  constitution of the AFCAI.
+                </p>
+                <p className="text-gray-600">
+                  I am aware that AFCAI is a organsation which is to empower
+                  Club / Academies for good governance with a aim to promote
+                  growth of Clubs / Academies within their area of operations.
+                </p>
+                <input
+                  value="Agree and Submit"
                   type="submit"
                   className="mt-6 bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400"
                 />
               </section>
             )}
-            {formStep === 4 && (
+            {formStep === 6 && (
               <section>
-                <h2 className="font-semibold text-3xl mb-8">
-                  Congratulations!
-                </h2>
-                <p>Registration process completed</p>
+                {submitError != null ? (
+                  <h2 className="font-semibold text-3xl mb-8">
+                    Something went wrong
+                  </h2>
+                ) : (
+                  <h2 className="font-semibold text-3xl mb-8">
+                    Congratulations!
+                  </h2>
+                )}
+                {submitError != null ? (
+                  <p className="text-red-500">{submitError}</p>
+                ) : (
+                  <p className="text-red-500">Thank you for registering</p>
+                )}
               </section>
             )}
-            {/* <input type="submit" /> */}
           </form>
         </div>
-        {/* <pre>{JSON.stringify(watch(), null, 2)}</pre> */}
       </div>
     </div>
   );
 }
 
-export default registration;
+export default Registration;

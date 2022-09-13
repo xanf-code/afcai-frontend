@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
-}
-
-module.exports = nextConfig
+  env: {
+    CLOUD_NAME: "dec2lboba",
+    PRESET_NAME: "AFCAI-Uploads",
+  },
+};
