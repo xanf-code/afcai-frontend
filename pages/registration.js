@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Switch } from "@headlessui/react";
 import FinishSectionButton from "../components/FinishSectionButton";
@@ -11,11 +11,26 @@ import Link from "next/link";
 const STEPS_AMOUNT = 6;
 
 function Registration() {
-  const [formStep, setFormStep] = useState(0);
+  const [formStep, setFormStep] = useState(6);
   const [youthTeamToggle, setYouthTeamToggle] = useState(false);
   const [licensedCoachToggle, setlicensedCoachToggle] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [submitError, setSubmitError] = useState(null);
+  const [preview, setPreview] = useState();
+
+  const fileInput = useRef(null);
+
+  useEffect(() => {
+    if (!selectedImage) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedImage);
+    setPreview(objectUrl);
+
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedImage]);
 
   const [registerTeam] = useMutation(REGISTER_MUTATION, {
     onError: (error) => {
@@ -66,8 +81,12 @@ function Registration() {
     });
   };
 
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
+  const handleImageChange = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedImage(undefined);
+      return;
+    }
+    setSelectedImage(e.target.files[0]);
   };
 
   async function handleImageUpload() {
@@ -79,6 +98,7 @@ function Registration() {
     formData.append("upload_preset", `${process.env.PRESET_NAME}`);
 
     getLogo(formData);
+    handleStepCompletion();
   }
 
   const {
@@ -105,7 +125,6 @@ function Registration() {
 
   const onSubmit = (values) => {
     createTeamHandler(values);
-    handleStepCompletion();
   };
 
   const finalStep = () => {
@@ -115,16 +134,20 @@ function Registration() {
 
   return (
     <div className="max-w-2xl md:mx-auto md:mt-6">
-      <h1 className="font-semibold font-IBMSans text-2xl text-black py-2 mt-5 ml-16">
-        Team/Academy Registration Form
-      </h1>
-      <Link href={"/about"}>
-        <a>
-          <p className="ml-16 text-sm font-IBMSans font-medium text-blue-500 hover:underline underline-offset-4">
-            Know More - AFCAI
-          </p>
-        </a>
-      </Link>
+      {formStep != 6 && (
+        <div>
+          <h1 className="font-semibold font-IBMSans text-2xl text-black py-2 mt-5 mx-16">
+            Team/Academy Registration Form
+          </h1>
+          <Link href={"/about"}>
+            <a>
+              <p className="ml-16 text-sm font-IBMSans font-medium text-blue-500 hover:underline underline-offset-4">
+                Know More - AFCAI
+              </p>
+            </a>
+          </Link>
+        </div>
+      )}
       <div className="max-w-xl w-full mb-20 overflow-hidden mt-4">
         <div className="px-16">
           <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
@@ -946,7 +969,23 @@ function Registration() {
               <section
                 className={`space-y-4 ${formStep === 4 ? "block" : "hidden"}`}
               >
+                {selectedImage ? (
+                  <img src={preview} className="h-32 display-block mx-auto" />
+                ) : (
+                  <img
+                    src="https://cdn.dribbble.com/users/436757/screenshots/2415904/placeholder_shot.gif"
+                    className="h-32 display-block mx-auto"
+                  />
+                )}
+                <button
+                  className="bg-blue-600 text-white p-2 rounded-md"
+                  onClick={() => fileInput.current.click()}
+                >
+                  {selectedImage ? "Change" : "Upload"} Logo
+                </button>
                 <input
+                  style={{ display: "none" }}
+                  ref={fileInput}
                   onChange={handleImageChange}
                   accept=".jpg, .jpeg, .png"
                   type="file"
@@ -998,8 +1037,22 @@ function Registration() {
                 {submitError != null ? (
                   <p className="text-red-500">{submitError}</p>
                 ) : (
-                  <p className="text-red-500">Thank you for registering</p>
+                  <div className="space-y-2">
+                    <p className="text-gray-600 font-IBMSans text-lg">
+                      Thank you for registering 👍
+                    </p>
+                    <p className="text-gray-600 font-IBMSans">
+                      Our team will get in touch with you very shortly. 🚀
+                    </p>
+                  </div>
                 )}
+                <div className="pt-6">
+                  <Link href="/">
+                    <a className="text-blue-700 hover:underline underline-offset-4">
+                      👈 Home
+                    </a>
+                  </Link>
+                </div>
               </section>
             )}
           </form>
