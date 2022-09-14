@@ -13,7 +13,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="max-w-7xl md:mx-auto space-y-4 mx-6 my-2 md:my-0">
+    <div className="max-w-7xl md:mx-auto space-y-4  mx-6 my-2 md:my-0">
       <div className=" md:grid md:grid-cols-2 md:gap-2 space-y-3 md:space-y-0">
         <ImageCarousel />
         <div className="md:grid md:grid-rows-2 md:gap-2 space-y-3 md:space-y-0">
