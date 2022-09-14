@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import Image from "next/image";
 
 dayjs.extend(relativeTime);
 
@@ -7,10 +8,14 @@ function HomeBlog({ blog }) {
   return (
     <div className="space-y-2 ">
       <div>
-        <img
+        <Image
           src={`${process.env.CMS_PUBLIC_URL}${blog.attributes.Cover.data.attributes.url}`}
           alt={`${process.env.CMS_PUBLIC_URL}${blog.attributes.Cover.data.attributes.name}`}
-          className="w-full h-64 object-cover rounded-md opacity-100 hover:opacity-60 transition duration-500 ease-in-out"
+          width={100}
+          height={60}
+          layout="responsive"
+          className=" object-cover rounded-md opacity-100 hover:opacity-60 transition duration-500 ease-in-out"
+          priority
         />
       </div>
       <div className="flex justify-between pt-1">

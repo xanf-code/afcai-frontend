@@ -13,6 +13,10 @@ module.exports = {
     GQL_PUBLIC_URL: "https://afcai.fly.dev/",
   },
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: [
+      "res.cloudinary.com",
+      "strapi-4h0k.onrender.com",
+      "afcai.fly.dev",
+    ],
   },
 };
