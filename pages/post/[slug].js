@@ -12,7 +12,7 @@ export default function IndividualBlog({ post }) {
         {post.attributes.Title}
       </h1>
       <div className="bg-gray-100 p-1 px-2 my-2 inline-block rounded-md">
-        <h1 className="tracking-wide font-IBMSans text-sm font-normal">
+        <h1 className="tracking-wide font-IBMSans text-xs font-normal">
           {dayjs(post.attributes.publishedAt).fromNow()}
         </h1>
       </div>

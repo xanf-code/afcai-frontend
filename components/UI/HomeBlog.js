@@ -14,13 +14,13 @@ function HomeBlog({ blog }) {
         />
       </div>
       <div className="flex justify-between pt-1">
-        <div className="bg-gray-100 p-1 px-2 inline-block rounded-md">
-          <h1 className="tracking-wide font-IBMSans text-sm">
+        <div className="bg-gray-100 p-1 px-1 inline-block rounded-md">
+          <h1 className="tracking-wide font-IBMSans text-xs">
             {dayjs(blog.attributes.publishedAt).fromNow()}
           </h1>
         </div>
         <div className="bg-gray-100 p-1 px-2 inline-block rounded-md">
-          <h1 className="tracking-wide font-IBMSans text-sm">
+          <h1 className="tracking-wide font-IBMSans text-xs">
             {blog.attributes.tag.data.attributes.Title}
           </h1>
         </div>
