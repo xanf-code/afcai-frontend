@@ -98,7 +98,6 @@ function Registration() {
     formData.append("upload_preset", `${process.env.PRESET_NAME}`);
 
     getLogo(formData);
-    handleStepCompletion();
   }
 
   const {
@@ -130,7 +129,7 @@ function Registration() {
 
   const finalStep = () => {
     handleImageUpload();
-
+    handleStepCompletion();
   };
 
   return (
