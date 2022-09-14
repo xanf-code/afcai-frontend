@@ -125,11 +125,12 @@ function Registration() {
 
   const onSubmit = (values) => {
     createTeamHandler(values);
+    handleStepCompletion();
   };
 
   const finalStep = () => {
     handleImageUpload();
-    handleStepCompletion();
+
   };
 
   return (
