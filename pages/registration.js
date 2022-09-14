@@ -6,6 +6,7 @@ import FinishSectionButton from "../components/FinishSectionButton";
 import REGISTER_MUTATION from "../graphql/mutations/registerMutation";
 import { useMutation } from "@apollo/client";
 import useImageStore from "../store/LogoImage";
+import Link from "next/link";
 
 const STEPS_AMOUNT = 6;
 
@@ -113,17 +114,22 @@ function Registration() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-start text-gray-900 relative">
-      <div className="mx-auto z-10 mt-20 text-center">
-        {/* <h1 className="text-black text-5xl font-semibold">
-          Welcome to the Club
-        </h1> */}
-      </div>
-      <div className="max-w-xl w-full mt-12 mb-24 mx-auto overflow-hidden z-10">
+    <div className="max-w-2xl md:mx-auto md:mt-6">
+      <h1 className="font-semibold font-IBMSans text-2xl text-black py-2 mt-5 ml-16">
+        Team/Academy Registration Form
+      </h1>
+      <Link href={"/about"}>
+        <a>
+          <p className="ml-16 text-sm font-IBMSans font-medium text-blue-500 hover:underline underline-offset-4">
+            Know More - AFCAI
+          </p>
+        </a>
+      </Link>
+      <div className="max-w-xl w-full mb-20 overflow-hidden mt-4">
         <div className="px-16">
           <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
             {formStep < STEPS_AMOUNT - 1 && (
-              <div className="flex items-center font-medium mb-4">
+              <div className="flex items-center font-medium mb-3">
                 {formStep > 0 && (
                   <button
                     onClick={handleGoBackToPreviousStep}
@@ -142,7 +148,12 @@ function Registration() {
                     </svg>
                   </button>
                 )}
-                Step {formStep + 1} of {STEPS_AMOUNT}
+                <div className="flex flex-col">
+                  Step {formStep + 1} of {STEPS_AMOUNT}
+                  <p className="text-sm font-IBMSans text-gray-400 mt-1">
+                    * Mandatory Field
+                  </p>
+                </div>
               </div>
             )}
             {formStep >= 0 && (
@@ -151,7 +162,7 @@ function Registration() {
               >
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Please Enter the Team/Academy/Club name
+                    Please Enter the Team/Academy/Club name *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -172,7 +183,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Please Enter the Team/Academy/Club Abrieviation
+                    Please Enter the Team/Academy/Club Abrieviation *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -205,7 +216,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Full Name of the person incharge of the Club / Academy
+                    Full Name of the person incharge of the Club / Academy *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -226,7 +237,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    I am the ? (Please select the appropriate option)
+                    I am the ? (Please select the appropriate option) *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
@@ -262,7 +273,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    When was the Club / Academy founded?
+                    When was the Club / Academy founded? *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -283,7 +294,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Postal Address of the Club / Academy
+                    Postal Address of the Club / Academy *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -304,7 +315,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Postal Code of the Club / Academy
+                    Postal Code of the Club / Academy *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -337,7 +348,7 @@ function Registration() {
               >
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Official Email Address of the Club / Academy
+                    Official Email Address of the Club / Academy *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -351,7 +362,6 @@ function Registration() {
                         message: "Invalid email address",
                       },
                     })}
-                    defaultValue="darshan@gmail.com"
                     name="email"
                     placeholder="Please enter your email address"
                   />
@@ -363,7 +373,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Official Phone Number of the Club / Academy
+                    Official Phone Number of the Club / Academy *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -377,7 +387,6 @@ function Registration() {
                         message: "Invalid phone number",
                       },
                     })}
-                    defaultValue="9113991845"
                     name="phone"
                     placeholder="Please enter your phone number"
                   />
@@ -393,12 +402,7 @@ function Registration() {
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
-                    {...register("website", {
-                      required: {
-                        value: true,
-                        message: "Website is required",
-                      },
-                    })}
+                    {...register("website")}
                     name="website"
                     placeholder="Please enter your website"
                   />
@@ -410,7 +414,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    State in which the Club / Academy operate ?
+                    State in which the Club / Academy operate ? *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -431,7 +435,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    District in which the Club / Academy operate ?
+                    District in which the Club / Academy operate ? *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -453,7 +457,7 @@ function Registration() {
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
                     Which District Football Association (DFA) the organisation
-                    is affilated to ? - (If Not Affliated put NA)
+                    is affilated to ? - (If Not Affliated put NA) *
                   </h1>
                   <input
                     className="w-full border border-gray-300 rounded-md p-2"
@@ -487,7 +491,6 @@ function Registration() {
                     <input
                       className="w-full border border-gray-300 rounded-md p-2"
                       {...register("facebook")}
-                      defaultValue="NA"
                       name="facebook"
                       placeholder="Enter your Facebook page link"
                     />
@@ -504,7 +507,6 @@ function Registration() {
                       className="w-full border border-gray-300 rounded-md p-2"
                       {...register("youtube")}
                       name="youtube"
-                      defaultValue="NA"
                       placeholder="Enter your Youtube account link"
                     />
                   </div>
@@ -519,7 +521,6 @@ function Registration() {
                     <input
                       className="w-full border border-gray-300 rounded-md p-2"
                       {...register("twitter")}
-                      defaultValue="NA"
                       name="twitter"
                       placeholder="Enter your Twitter acount link"
                     />
@@ -536,7 +537,6 @@ function Registration() {
                       className="w-full border border-gray-300 rounded-md p-2"
                       {...register("instagram")}
                       name="instagram"
-                      defaultValue="NA"
                       placeholder="Enter your Instagram account link"
                     />
                   </div>
@@ -552,7 +552,6 @@ function Registration() {
                       className="w-full border border-gray-300 rounded-md p-2"
                       {...register("linkedin")}
                       name="linkedin"
-                      defaultValue="NA"
                       placeholder="Enter your Linkedin account/page link"
                     />
                   </div>
@@ -571,7 +570,7 @@ function Registration() {
               >
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    What type of Club / Academy are you registed as ?
+                    What type of Club / Academy are you registed as ? *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
@@ -604,7 +603,7 @@ function Registration() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <h1 className="text-gray-500">We are a ?</h1>
+                  <h1 className="text-gray-500">We are a ? *</h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
                     {...register("teamReputation", {
@@ -642,7 +641,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Type of Association the club is linked to ?
+                    Type of Association the club is linked to ? *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
@@ -666,7 +665,7 @@ function Registration() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <h1 className="text-gray-500">Type of the Academy ?</h1>
+                  <h1 className="text-gray-500">Type of the Academy ? *</h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
                     {...register("academyType", {
@@ -689,7 +688,9 @@ function Registration() {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <h1 className="text-gray-500">Do you have access to CRS ?</h1>
+                  <h1 className="text-gray-500">
+                    Do you have access to CRS ? *
+                  </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
                     {...register("crsAccess", {
@@ -712,7 +713,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Do you have a Seniors Mens Team ?
+                    Do you have a Seniors Mens Team ? *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
@@ -736,7 +737,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    Do you have a Seniors Womens Team ?
+                    Do you have a Seniors Womens Team ? *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
@@ -911,29 +912,28 @@ function Registration() {
                       </div>
                     </div>
                   )}
-                  <div className="space-y-2">
-                    <h1 className="text-gray-500">
-                      We caters to differently abled people (If YES, Who are you
-                      catering to?, If NO put NA)
-                    </h1>
-                    <input
-                      className="w-full border border-gray-300 rounded-md p-2"
-                      {...register("disabledCatering", {
-                        required: true,
-                        message:
-                          "Please enter the type of the disabled people you are catering to",
-                      })}
-                      name="disabledCatering"
-                      placeholder="Please fill the information."
-                    />
-                    {errors.disabledCatering && (
-                      <p className="text-red-500">
-                        {errors.disabledCatering?.message}
-                      </p>
-                    )}
-                  </div>
                 </div>
-
+                <div className="space-y-2">
+                  <h1 className="text-gray-500">
+                    We caters to differently abled people (If YES, Who are you
+                    catering to?, If NO put NA) *
+                  </h1>
+                  <input
+                    className="w-full border border-gray-300 rounded-md p-2"
+                    {...register("disabledCatering", {
+                      required: true,
+                      message:
+                        "Please enter the type of the disabled people you are catering to",
+                    })}
+                    name="disabledCatering"
+                    placeholder="Please fill the information."
+                  />
+                  {errors.disabledCatering && (
+                    <p className="text-red-500">
+                      {errors.disabledCatering?.message}
+                    </p>
+                  )}
+                </div>
                 <FinishSectionButton
                   onClick={handleStepCompletion}
                   isDisabled={!isValid}

@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "IBMSans";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-var.woff2");
+}
+
+@font-face {
+  font-family: "QuattroBold";
+  src: url("/fonts/iAWriterQuattroS-Bold.woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Quattro";
+  src: url("/fonts/iAWriterQuattroS-Regular.woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
 html,
 body {
   padding: 0;
