@@ -1,29 +1,28 @@
 import { useQuery } from "@apollo/client";
 import { useState } from "react";
-import { GET_TEAMS } from "../graphql/queries/GetTeams";
+import { GET_VERIFIED_TEAMS } from "../graphql/queries/GetVerifiedTeams";
 import debounce from "lodash.debounce";
 import AffiliatedCard from "../components/UI/AffiliatedCard";
 
 function Affiliated() {
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [field, setField] = useState("teamName");
   const [value, setValue] = useState("");
-  const PAGE_SIZE = 4;
+  const PAGE_SIZE = 10;
 
   const setValueQuery = (e) => setValue(e?.target?.value);
-  const { loading, error, data } = useQuery(GET_TEAMS, {
+  const { loading, error, data } = useQuery(GET_VERIFIED_TEAMS, {
     variables: {
       field: field,
       value: value,
       limNum: PAGE_SIZE,
-      offset: page * PAGE_SIZE,
-      onlyVerified: true,
+      page: page,
     },
   });
 
   //   Manage Loading and Error Later
-
-  const totalPage = data?.getTeams.docCount / PAGE_SIZE;
+  const hasNextPage = data?.getVerifiedTeams.hasNextPage;
+  const hasPrevPage = data?.getVerifiedTeams.hasPrevPage;
 
   return (
     <div className="max-w-3xl md:mx-auto md:mt-6 m-5">
@@ -36,26 +35,26 @@ function Affiliated() {
         <input type="text" onChange={debounce(setValueQuery, 700)} />
       </div>
       {data &&
-        data.getTeams.data.map((team) => (
+        data.getVerifiedTeams.docs.map((team) => (
           <div key={team.teamProfileSlug}>
             <AffiliatedCard team={team} />
           </div>
         ))}
-      <div className="flex justify-evenly">
+      {/* <div className="flex justify-evenly">
         <button
-          disabled={page < 1 ? true : false}
+          disabled={hasPrevPage ? false : true}
           onClick={() => setPage((prev) => prev - 1)}
         >
           Previous
         </button>
-        <span>Page {page + 1}</span>
+        <span>Page {data?.getVerifiedTeams.page}</span>
         <button
-          disabled={page >= totalPage - 1 ? true : false}
+          disabled={hasNextPage ? false : true}
           onClick={() => setPage((prev) => prev + 1)}
         >
           Next
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
