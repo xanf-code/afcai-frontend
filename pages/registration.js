@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Switch } from "@headlessui/react";
 import FinishSectionButton from "../components/FinishSectionButton";
@@ -17,8 +17,6 @@ function Registration() {
   const [selectedImage, setSelectedImage] = useState();
   const [submitError, setSubmitError] = useState(null);
   const [preview, setPreview] = useState();
-
-  const fileInput = useRef(null);
 
   useEffect(() => {
     if (!selectedImage) {
@@ -97,7 +95,8 @@ function Registration() {
     formData.append("file", selectedImage);
     formData.append("upload_preset", `${process.env.PRESET_NAME}`);
 
-    getLogo(formData);
+    await getLogo(formData);
+    handleStepCompletion();
   }
 
   const {
@@ -129,7 +128,6 @@ function Registration() {
 
   const finalStep = () => {
     handleImageUpload();
-    handleStepCompletion();
   };
 
   return (
@@ -977,15 +975,7 @@ function Registration() {
                     className="h-32 display-block mx-auto"
                   />
                 )}
-                <button
-                  className="bg-blue-600 text-white p-2 rounded-md"
-                  onClick={() => fileInput.current.click()}
-                >
-                  {selectedImage ? "Change" : "Upload"} Logo
-                </button>
                 <input
-                  style={{ display: "none" }}
-                  ref={fileInput}
                   onChange={handleImageChange}
                   accept=".jpg, .jpeg, .png"
                   type="file"
