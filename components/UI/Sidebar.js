@@ -36,6 +36,18 @@ function Sidebar() {
           className="hover:bg-blue-50 p-2 rounded-md ease-in-out duration-300"
           onClick={setShowSideBar}
         >
+          <Link href="/affiliated">
+            <a>
+              <h1 className="text-lg font-IBMSans font-medium">
+                🚀 Affliated Teams
+              </h1>
+            </a>
+          </Link>
+        </div>
+        <div
+          className="hover:bg-blue-50 p-2 rounded-md ease-in-out duration-300"
+          onClick={setShowSideBar}
+        >
           <Link href="/about">
             <a>
               <h1 className="text-lg font-IBMSans font-medium">🏢 About Us</h1>

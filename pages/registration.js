@@ -7,18 +7,30 @@ import REGISTER_MUTATION from "../graphql/mutations/registerMutation";
 import { useMutation } from "@apollo/client";
 import useImageStore from "../store/LogoImage";
 import Link from "next/link";
+import ky from "ky";
 
 const STEPS_AMOUNT = 6;
 
 function Registration() {
-  const [formStep, setFormStep] = useState(0);
+  const [formStep, setFormStep] = useState(1);
   const [youthTeamToggle, setYouthTeamToggle] = useState(false);
   const [licensedCoachToggle, setlicensedCoachToggle] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
   const [submitError, setSubmitError] = useState(null);
   const [preview, setPreview] = useState();
+  const [statesData, setStatesData] = useState([]);
+
+  const getJSONData = () => {
+    ky.get("/data/states.json")
+      .json()
+      .then((data) => {
+        setStatesData(data.states);
+      });
+  };
 
   useEffect(() => {
+    getJSONData();
+    console.log(statesData);
     if (!selectedImage) {
       setPreview(undefined);
       return;
@@ -437,17 +449,24 @@ function Registration() {
                   <h1 className="text-gray-500">
                     State in which the Club / Academy operate ? *
                   </h1>
-                  <input
-                    className="w-full border border-gray-300 rounded-md p-2"
+                  <select
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
                     {...register("state", {
                       required: {
                         value: true,
-                        message: "State is required",
+                        message: "State/UT is required",
                       },
                     })}
                     name="state"
-                    placeholder="Please enter your state"
-                  />
+                  >
+                    <option value="">Select...</option>
+                    {statesData &&
+                      statesData.map((state) => (
+                        <option key={state.id} value={state.name}>
+                          {state.name}
+                        </option>
+                      ))}
+                  </select>
                   {errors.state && (
                     <p className="text-sm text-red-600 mt-2">
                       {errors.state?.message}
