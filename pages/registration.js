@@ -19,6 +19,7 @@ function Registration() {
   const [submitError, setSubmitError] = useState(null);
   const [preview, setPreview] = useState();
   const [statesData, setStatesData] = useState([]);
+  const [districtsData, setDistrictsData] = useState([]);
 
   const getJSONData = () => {
     ky.get("/data/states.json")
@@ -26,11 +27,17 @@ function Registration() {
       .then((data) => {
         setStatesData(data.states);
       });
+    getDistrictData();
+  };
+
+  const getDistrictData = (districtID) => {
+    const data = statesData.find((state) => state.name === districtID);
+    data && setDistrictsData(data?.districts);
   };
 
   useEffect(() => {
+    console.log(districtsData);
     getJSONData();
-    console.log(statesData);
     if (!selectedImage) {
       setPreview(undefined);
       return;
@@ -457,6 +464,9 @@ function Registration() {
                         message: "State/UT is required",
                       },
                     })}
+                    onChange={(e) => {
+                      getDistrictData(e.target.value);
+                    }}
                     name="state"
                   >
                     <option value="">Select...</option>
@@ -477,8 +487,8 @@ function Registration() {
                   <h1 className="text-gray-500">
                     District in which the Club / Academy operate ? *
                   </h1>
-                  <input
-                    className="w-full border border-gray-300 rounded-md p-2"
+                  <select
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
                     {...register("district", {
                       required: {
                         value: true,
@@ -486,8 +496,15 @@ function Registration() {
                       },
                     })}
                     name="district"
-                    placeholder="Please enter your district"
-                  />
+                  >
+                    <option value="">Select...</option>
+                    {districtsData &&
+                      districtsData?.map((district) => (
+                        <option key={district.id} value={district.name}>
+                          {district.name}
+                        </option>
+                      ))}
+                  </select>
                   {errors.district && (
                     <p className="text-sm text-red-600 mt-2">
                       {errors.district?.message}
