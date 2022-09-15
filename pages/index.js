@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(() => {
     getNewBlogs();
-    // console.log(process.env.GQL_PUBLIC_URL);
   }, []);
 
   return (
