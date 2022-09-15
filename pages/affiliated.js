@@ -5,7 +5,7 @@ import debounce from "lodash.debounce";
 import AffiliatedCard from "../components/UI/AffiliatedCard";
 
 function Affiliated() {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [field, setField] = useState("teamName");
   const [value, setValue] = useState("");
   const PAGE_SIZE = 4;

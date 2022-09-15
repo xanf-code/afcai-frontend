@@ -36,7 +36,6 @@ function Registration() {
   };
 
   useEffect(() => {
-    console.log(districtsData);
     getJSONData();
     if (!selectedImage) {
       setPreview(undefined);
@@ -454,7 +453,7 @@ function Registration() {
                 </div>
                 <div className="space-y-2">
                   <h1 className="text-gray-500">
-                    State in which the Club / Academy operate ? *
+                    State / UT in which the Club / Academy operate ? *
                   </h1>
                   <select
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2"
