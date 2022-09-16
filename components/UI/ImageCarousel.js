@@ -19,7 +19,7 @@ export default function ImageCarousel() {
   const showSidebar = useNavBarStore((state) => state.showSideBar);
 
   return (
-    <div className={`${!showSidebar ? "invisible" : "visible"}`}>
+    <div>
       <Slider {...settings}>
         <div>
           <img

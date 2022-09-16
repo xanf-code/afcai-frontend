@@ -27,6 +27,7 @@ module.exports = {
           },
         },
       }),
+      margin: ["first", "last"],
     },
   },
   plugins: [require("@tailwindcss/typography")],

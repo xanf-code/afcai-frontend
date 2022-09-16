@@ -1,34 +1,35 @@
 import { gql } from "@apollo/client";
 
 export const GET_VERIFIED_TEAMS = gql`
-  query GetVerifiedTeams(
-    $value: String
-    $field: String
-    $page: Int
-    $limNum: Int
-  ) {
+  query GetVerifiedTeams($field: String, $value: String, $cursor: Int) {
     getVerifiedTeams(
-      value: $value
+      lim_num: 3
       field: $field
-      page: $page
-      lim_num: $limNum
+      value: $value
+      cursor: $cursor
     ) {
       docs {
         teamName
-        teamID
-        isVerifiedTime
-        createdAt
-        teamLogo
+        district
+        teamType
+        state
         association
+        postalCode
+        id
+        description
+        teamAbrieviation
+        teamLogo
+        email
+        teamReputation
+        teamFounded
         teamProfileSlug
       }
-      totalDocs
       limit
       totalPages
-      page
-      pagingCounter
-      hasPrevPage
-      hasNextPage
+      nextCursor
+      hasNextCursor
+      totalDocs
+      resCount
     }
   }
 `;

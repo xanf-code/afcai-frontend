@@ -34,7 +34,7 @@ export default function Home() {
                   <HomeBlog key={blog.id} blog={blog} />
                 </a>
               </Link>
-              <hr className="w-full border-1 border-gray-100 my-4 md:hidden" />
+              <hr className="my-4 h-px bg-gray-200 border-0 md:hidden" />
             </div>
           ))}
       </div>

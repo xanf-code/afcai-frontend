@@ -8,10 +8,7 @@ function Navbar() {
 
   return (
     <div>
-      <div
-        className="cursor-pointer disabled:selection:"
-        onClick={setShowSideBar}
-      >
+      <div className="cursor-pointer" onClick={setShowSideBar}>
         {!showSideBar ? (
           <X className="m-2.5" size={32} />
         ) : (
