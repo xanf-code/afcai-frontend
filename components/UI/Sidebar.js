@@ -76,7 +76,7 @@ function Sidebar() {
               </Link>
             </li>
             <li onClick={setShowSideBar}>
-              <Link href="/contact">
+              <Link href="/connect">
                 <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
                   <UsersThree size={25} weight="duotone" />
                   <span className="flex-1 ml-3 whitespace-nowrap font-IBMSans">

@@ -50,7 +50,6 @@ function Registration() {
 
   const [registerTeam] = useMutation(REGISTER_MUTATION, {
     onError: (error) => {
-      console.log(error?.message);
       setSubmitError(error?.message);
     },
   });
