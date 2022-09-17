@@ -3,6 +3,7 @@ import { useState } from "react";
 import { GET_VERIFIED_TEAMS } from "../graphql/queries/GetVerifiedTeams";
 import debounce from "lodash.debounce";
 import AffiliatedCard from "../components/UI/AffiliatedCard";
+import Link from "next/link";
 
 function Affiliated() {
   const [field, setField] = useState("teamName");
@@ -68,14 +69,23 @@ function Affiliated() {
           aria-describedby="button-addon2"
         />
       </div>
-      {data &&
-        data.getVerifiedTeams.docs.map((team, index) => (
-          <div key={index}>
-            <AffiliatedCard team={team} />
-          </div>
-        ))}
-      <div>
+      <div className="md:grid md:grid-cols-2 md:gap-4">
+        {data &&
+          data.getVerifiedTeams.docs.map((team, index) => (
+            <div key={index} className="my-3 md:my-0">
+              <Link href={"#"}>
+                <a>
+                  <AffiliatedCard team={team} />
+                </a>
+              </Link>
+            </div>
+          ))}
+      </div>
+      <div className="pt-3 justify-center flex">
         <button
+          className={`py-2 px-3 text-xs font-medium text-center text-white ${
+            hasNextCursor ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-500"
+          } rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300`}
           disabled={hasNextCursor ? false : true}
           onClick={handleLoadData}
         >

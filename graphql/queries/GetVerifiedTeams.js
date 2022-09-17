@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export const GET_VERIFIED_TEAMS = gql`
   query GetVerifiedTeams($field: String, $value: String, $cursor: Int) {
     getVerifiedTeams(
-      lim_num: 3
+      lim_num: 4
       field: $field
       value: $value
       cursor: $cursor

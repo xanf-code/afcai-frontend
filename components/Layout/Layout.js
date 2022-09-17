@@ -35,7 +35,9 @@ function Layout({ children }) {
           <Navbar />
         </header>
         <main
-          className={`${!showSideBar ? "md:mt-[58px] -z-10" : "md:mt-0"} mb-10`}
+          className={`${
+            !showSideBar ? "md:mt-[58px] -z-10" : "md:mt-0"
+          } mb-10 `}
         >
           {children}
         </main>

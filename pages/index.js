@@ -1,19 +1,11 @@
 import HomeBlog from "../components/UI/HomeBlog";
-import { useEffect } from "react";
-import useBlogStore from "../store/BlogStore";
 import Link from "next/link";
 import ImageCarousel from "../components/UI/ImageCarousel";
+import ky from "ky";
 
-export default function Home() {
-  const blogs = useBlogStore((state) => state.blogs);
-  const getNewBlogs = useBlogStore((state) => state.getNewBlogs);
-
-  useEffect(() => {
-    getNewBlogs();
-  }, []);
-
+export default function Home({ data }) {
   return (
-    <div className="max-w-7xl md:mx-auto space-y-4  mx-6 my-2 md:my-0">
+    <div className="max-w-7xl md:mx-auto space-y-4  mx-6 my-2 md:my-0 mt-6 md:mt-0">
       <div className=" md:grid md:grid-cols-2 md:gap-2 space-y-3 md:space-y-0">
         <ImageCarousel />
         <div className="md:grid md:grid-rows-2 md:gap-2 space-y-3 md:space-y-0">
@@ -26,8 +18,8 @@ export default function Home() {
       </h1>
       <hr className="w-full border-1 border-gray-200 pb-2" />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4 ">
-        {blogs &&
-          blogs.map((blog) => (
+        {data &&
+          data.map((blog) => (
             <div key={blog.id}>
               <Link href={`/post/${blog.attributes.Slug}`}>
                 <a>
@@ -40,4 +32,23 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const { data } = await ky
+    .get(
+      `${process.env.CMS_PUBLIC_URL}/api/posts?sort=publishedAt:desc&pagination[limit]=9&populate=*`,
+      {
+        headers: {
+          Accept: "application/json",
+          Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
+        },
+      }
+    )
+    .json();
+  return {
+    props: {
+      data,
+    },
+  };
 }
