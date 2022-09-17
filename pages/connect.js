@@ -160,7 +160,7 @@ export default function Connect() {
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-400">
         <a href="#" className="hover:underline">
-          +91-9113881745
+          +91-7784871648
         </a>
       </p>
     </div>
