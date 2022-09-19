@@ -23,7 +23,7 @@ function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="#">
+              <Link href="/privacy-policy">
                 <a className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
               </Link>
             </li>
@@ -44,7 +44,8 @@ function Footer() {
           </span>
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a
-              href="#"
+              target="_blank"
+              href="https://www.facebook.com/afcai/"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
@@ -62,7 +63,8 @@ function Footer() {
               <span className="sr-only">Facebook page</span>
             </a>
             <a
-              href="#"
+              target="_blank"
+              href="https://www.instagram.com/the_afcai"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
@@ -80,7 +82,8 @@ function Footer() {
               <span className="sr-only">Instagram page</span>
             </a>
             <a
-              href="#"
+              target="_blank"
+              href="https://twitter.com/afcai_tweets"
               className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg

@@ -21,4 +21,13 @@ module.exports = {
       "afcai.fly.dev",
     ],
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/admin/cms",
+        destination: "https://strapi-4h0k.onrender.com/admin",
+        permanent: true,
+      },
+    ];
+  },
 };
