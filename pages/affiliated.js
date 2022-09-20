@@ -5,6 +5,7 @@ import debounce from "lodash.debounce";
 import AffiliatedCard from "../components/UI/AffiliatedCard";
 import Link from "next/link";
 import Head from "next/head";
+import Skeleton from "../components/UI/Skeleton";
 
 function Affiliated() {
   const [field, setField] = useState("teamName");
@@ -44,7 +45,6 @@ function Affiliated() {
       },
     });
   };
-  //   Manage Loading and Error Later
 
   return (
     <div>
@@ -97,13 +97,15 @@ function Affiliated() {
                 </Link>
               </div>
             ))}
+          {(error || loading) && <Skeleton />}
         </div>
         <div className="pt-3 justify-center flex">
           <button
             className={`py-2 px-3 text-xs font-medium text-center text-white ${
               hasNextCursor ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-500"
-            } rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300`}
-            disabled={hasNextCursor ? false : true}
+            } rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ${
+              hasNextCursor ? "visible" : "hidden"
+            }`}
             onClick={handleLoadData}
           >
             Load More

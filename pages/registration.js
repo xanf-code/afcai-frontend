@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Switch } from "@headlessui/react";
 import FinishSectionButton from "../components/FinishSectionButton";
 import REGISTER_MUTATION from "../graphql/mutations/registerMutation";
@@ -9,6 +8,14 @@ import useImageStore from "../store/LogoImage";
 import Link from "next/link";
 import ky from "ky";
 import Head from "next/head";
+import {
+  ArrowCircleLeft,
+  FacebookLogo,
+  InstagramLogo,
+  LinkedinLogo,
+  TwitterLogo,
+  YoutubeLogo,
+} from "phosphor-react";
 
 const STEPS_AMOUNT = 6;
 
@@ -186,22 +193,12 @@ function Registration() {
               {formStep < STEPS_AMOUNT - 1 && (
                 <div className="flex items-center font-medium mb-3">
                   {formStep > 0 && (
-                    <button
+                    <div
+                      className="cursor-pointer"
                       onClick={handleGoBackToPreviousStep}
-                      type="button"
-                      className="focus:outline-none"
                     >
-                      <svg
-                        viewBox="0 0 20 20"
-                        version="1.1"
-                        className="w-6 mr-2 fill-current text-gray-300 hover:text-gray-400 focus:outline-none"
-                      >
-                        <polygon
-                          id="Combined-Shape"
-                          points="10 13 18 13 18 7 10 7 10 2 2 10 10 18 10 13"
-                        ></polygon>
-                      </svg>
-                    </button>
+                      <ArrowCircleLeft className="mr-4" size={30} />
+                    </div>
                   )}
                   <div className="flex flex-col">
                     Step {formStep + 1} of {STEPS_AMOUNT}
@@ -554,13 +551,20 @@ function Registration() {
                       Add your Social Media Links (Optional)
                     </h1>
                     <div className="flex">
-                      <Image
+                      {/* <Image
                         width={50}
                         height={50}
                         objectFit="contain"
                         src="/Facebook.png"
                         alt="Facebook"
-                      />
+                      /> */}
+                      <div className="content-center">
+                        <FacebookLogo
+                          className="mr-4 mt-1.5 flex justify-center items-center"
+                          size={32}
+                          weight="duotone"
+                        />
+                      </div>
                       <input
                         className="w-full border border-gray-300 rounded-md p-2"
                         {...register("facebook")}
@@ -569,13 +573,13 @@ function Registration() {
                       />
                     </div>
                     <div className="flex">
-                      <Image
-                        width={50}
-                        height={50}
-                        objectFit="contain"
-                        src="/Youtube.png"
-                        alt="Youtube"
-                      />
+                      <div className="content-center">
+                        <YoutubeLogo
+                          className="mr-4 mt-1.5 flex justify-center items-center"
+                          size={32}
+                          weight="duotone"
+                        />
+                      </div>
                       <input
                         className="w-full border border-gray-300 rounded-md p-2"
                         {...register("youtube")}
@@ -584,13 +588,13 @@ function Registration() {
                       />
                     </div>
                     <div className="flex">
-                      <Image
-                        width={50}
-                        height={50}
-                        objectFit="contain"
-                        src="/Twitter.png"
-                        alt="Twitter"
-                      />
+                      <div className="content-center">
+                        <TwitterLogo
+                          className="mr-4 mt-1.5 flex justify-center items-center"
+                          size={32}
+                          weight="duotone"
+                        />
+                      </div>
                       <input
                         className="w-full border border-gray-300 rounded-md p-2"
                         {...register("twitter")}
@@ -599,28 +603,28 @@ function Registration() {
                       />
                     </div>
                     <div className="flex">
-                      <Image
-                        width={50}
-                        height={50}
-                        objectFit="contain"
-                        src="/Instagram.png"
-                        alt="Instagram"
-                      />
+                      <div className="content-center">
+                        <InstagramLogo
+                          className="mr-4 mt-1.5 flex justify-center items-center"
+                          size={32}
+                          weight="duotone"
+                        />
+                      </div>
                       <input
-                        className="w-full border border-gray-300 rounded-md p-2"
+                        className="w-full border border-gray-300 rounded-md p-2 items-center"
                         {...register("instagram")}
                         name="instagram"
                         placeholder="Enter your Instagram account link"
                       />
                     </div>
                     <div className="flex">
-                      <Image
-                        width={50}
-                        height={50}
-                        objectFit="contain"
-                        src="/Link.png"
-                        alt="Link"
-                      />
+                      <div className="content-center">
+                        <LinkedinLogo
+                          className="mr-4 mt-1.5 flex justify-center items-center"
+                          size={32}
+                          weight="duotone"
+                        />
+                      </div>
                       <input
                         className="w-full border border-gray-300 rounded-md p-2"
                         {...register("linkedin")}
