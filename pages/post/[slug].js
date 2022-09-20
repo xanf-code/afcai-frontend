@@ -21,7 +21,7 @@ export default function IndividualBlog({ post }) {
         />
         <meta
           property="og:image"
-          content={post.attributes.Cover.data.attributes.formats.thumbnail.url}
+          content={`${process.env.CMS_PUBLIC_URL}${post.attributes.Cover.data.attributes.formats.thumbnail.url}`}
         />
       </Head>
       <div className="max-w-2xl md:mx-auto md:mt-6 m-5">
