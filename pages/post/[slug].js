@@ -11,10 +11,7 @@ export default function IndividualBlog({ post }) {
     <div>
       <Head>
         <title>{post.attributes.Title}</title>
-        <meta
-          name="description"
-          content="AFCAI has been formed to help bridge the gap between the thousands of clubs in India and the All India Football Federation (AIFF). We wish to work in tandem with the AIFF and intend to help as many existing clubs and new clubs on their path to development."
-        />
+        <meta name="description" content={post.attributes.Content} />
         <meta
           name="keywords"
           content="Indian Football, AFC, AFCAI, Football, AIFF, Football India, Football News, Football Association, Indian Football Association, Football In India, IFTWC"
