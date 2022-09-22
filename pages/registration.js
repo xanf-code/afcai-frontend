@@ -1062,9 +1062,14 @@ function Registration() {
                     growth of Clubs / Academies within their area of operations.
                   </p>
                   <input
-                    value="Agree and Submit"
+                    disabled={`${imageSrc ? "" : true}`}
+                    value={`${
+                      imageSrc == ""
+                        ? "Uploading image please wait..."
+                        : "Agree and continue"
+                    }`}
                     type="submit"
-                    className="mt-6 bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400"
+                    className="mt-6 bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 cursor-pointer"
                   />
                 </section>
               )}

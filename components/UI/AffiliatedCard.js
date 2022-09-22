@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Flag, GlobeHemisphereEast, MapPin, PushPin } from "phosphor-react";
+import { Flag, GlobeHemisphereEast, MapPin } from "phosphor-react";
 
 function AffiliatedCard({ team }) {
   function textEllipsis(
@@ -19,7 +19,7 @@ function AffiliatedCard({ team }) {
     return str;
   }
   return (
-    <div className="bg-gray-100 rounded-md p-4">
+    <div className="bg-gray-100 h-full rounded-md p-4">
       <div>
         <div className="flex flex-row">
           <Image

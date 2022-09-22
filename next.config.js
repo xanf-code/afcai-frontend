@@ -6,6 +6,7 @@ module.exports = withAxiom({
   reactStrictMode: true,
   swcMinify: true,
   env: {
+    PHRASE: "AFCAIADMIN",
     CLOUD_NAME: "dec2lboba",
     PRESET_NAME: "AFCAI-Uploads",
     BEARER_TOKEN:
@@ -13,7 +14,7 @@ module.exports = withAxiom({
 
     CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
     GQL_PUBLIC_URL:
-      // "http://localhost:5000/",
+      //  "http://localhost:5000/",
       "https://afcai.fly.dev/",
   },
   images: {

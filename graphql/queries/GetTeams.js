@@ -1,22 +1,11 @@
 import { gql } from "@apollo/client";
 
 export const GET_TEAMS = gql`
-  query GetTeams(
-    $field: String
-    $value: String
-    $limNum: Int
-    $offset: Int
-    $onlyVerified: Boolean
-  ) {
-    getTeams(
-      field: $field
-      value: $value
-      lim_num: $limNum
-      offset: $offset
-      onlyVerified: $onlyVerified
-    ) {
+  query GetTeams($field: String, $value: String, $limNum: Int) {
+    getTeams(field: $field, value: $value, lim_num: $limNum) {
       data {
         teamName
+        teamID
         description
         teamAbrieviation
         createdAt
@@ -24,9 +13,11 @@ export const GET_TEAMS = gql`
         association
         email
         website
+        phone
         personIncharge
         personType
         postalCode
+        postalAddress
         teamType
         state
         district
@@ -41,6 +32,7 @@ export const GET_TEAMS = gql`
         academyType
         licensedCoaches
         teamProfileSlug
+        isVerified
         socials {
           facebook
           twitter

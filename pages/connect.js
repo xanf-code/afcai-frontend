@@ -176,15 +176,11 @@ export default function Connect() {
             className="cursor-pointer disabled:cursor-not-allowed bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400"
           />
         </form>
-        <p className="mt-4 mb-2 text-sm text-gray-500 dark:text-gray-400">
-          <a href="#" className="hover:underline">
-            contact@afcai.in
-          </a>
+        <p className="mt-4 mb-2 text-sm text-gray-500 dark:text-gray-400 hover:underline">
+          contact@afcai.in
         </p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">
-          <a href="#" className="hover:underline">
-            +91-7717304779
-          </a>
+        <p className="text-sm text-gray-500 dark:text-gray-400 hover:underline">
+          +91-7717304779
         </p>
       </div>
     </div>

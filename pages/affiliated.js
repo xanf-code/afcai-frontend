@@ -10,41 +10,40 @@ import Skeleton from "../components/UI/Skeleton";
 function Affiliated() {
   const [field, setField] = useState("teamName");
   const [value, setValue] = useState("");
+  const [limit, setLimit] = useState(4);
 
   const setValueQuery = (e) => setValue(e?.target?.value);
   const { loading, error, data, fetchMore } = useQuery(GET_VERIFIED_TEAMS, {
     variables: {
       field,
       value,
-      cursor: null,
+      limNum: null,
     },
   });
 
-  const hasNextCursor = data?.getVerifiedTeams?.hasNextCursor;
-  const resCount = data?.getVerifiedTeams?.resCount;
+  // const handleLoadData = () => {
+  // setLimit((prev) => prev + 3);
+  //   const nextCursor = data?.getVerifiedTeams?.nextCursor;
 
-  const handleLoadData = () => {
-    const nextCursor = data?.getVerifiedTeams?.nextCursor;
+  //   fetchMore({
+  //     variables: {
+  //       cursor: nextCursor,
+  //     },
+  //     updateQuery: (prev, { fetchMoreResult }) => {
+  //       if (!fetchMoreResult) return prev;
 
-    fetchMore({
-      variables: {
-        cursor: nextCursor,
-      },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return prev;
-
-        return {
-          getVerifiedTeams: {
-            ...fetchMoreResult.getVerifiedTeams,
-            docs: [
-              ...prev.getVerifiedTeams.docs,
-              ...fetchMoreResult.getVerifiedTeams.docs,
-            ],
-          },
-        };
-      },
-    });
-  };
+  //       return {
+  //         getVerifiedTeams: {
+  //           ...fetchMoreResult.getVerifiedTeams,
+  //           docs: [
+  //             ...prev.getVerifiedTeams.docs,
+  //             ...fetchMoreResult.getVerifiedTeams.docs,
+  //           ],
+  //         },
+  //       };
+  //     },
+  //   });
+  // };
 
   return (
     <div>
@@ -88,7 +87,7 @@ function Affiliated() {
         </div>
         <div className="md:grid md:grid-cols-2 md:gap-4">
           {data &&
-            data.getVerifiedTeams.docs.map((team, index) => (
+            data.getVerifiedTeams.docs.slice(0, limit).map((team, index) => (
               <div key={index} className="my-3 md:my-0">
                 <Link href={"#"}>
                   <a>
@@ -101,12 +100,10 @@ function Affiliated() {
         </div>
         <div className="pt-3 justify-center flex">
           <button
-            className={`py-2 px-3 text-xs font-medium text-center text-white ${
-              hasNextCursor ? "bg-blue-700 hover:bg-blue-800" : "bg-gray-500"
-            } rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 ${
-              hasNextCursor ? "visible" : "hidden"
-            }`}
-            onClick={handleLoadData}
+            className="py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
+            onClick={() => {
+              setLimit((prev) => prev + 3);
+            }}
           >
             Load More
           </button>

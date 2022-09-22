@@ -1,13 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_VERIFIED_TEAMS = gql`
-  query GetVerifiedTeams($field: String, $value: String, $cursor: Int) {
-    getVerifiedTeams(
-      lim_num: 4
-      field: $field
-      value: $value
-      cursor: $cursor
-    ) {
+  query GetVerifiedTeams($field: String, $value: String, $limNum: Int) {
+    getVerifiedTeams(lim_num: $limNum, field: $field, value: $value) {
       docs {
         teamName
         district
@@ -24,9 +19,6 @@ export const GET_VERIFIED_TEAMS = gql`
         teamFounded
         teamProfileSlug
       }
-      limit
-      totalPages
-      nextCursor
       hasNextCursor
       totalDocs
       resCount

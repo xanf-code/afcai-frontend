@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
+  CreditCard,
   House,
   Info,
   Lightbulb,
@@ -7,11 +9,25 @@ import {
   ShieldChevron,
   UsersThree,
 } from "phosphor-react";
+import { useEffect, useState } from "react";
 import useNavBarStore from "../../store/NavBarStore";
 
 function Sidebar() {
   const showSideBar = useNavBarStore((state) => state.showSideBar);
   const setShowSideBar = useNavBarStore((state) => state.setShowSideBar);
+  const [admin, setAdmin] = useState(false);
+  const router = useRouter();
+
+  const checkSession = () => {
+    const accessToken = localStorage.getItem("access");
+    if (accessToken == "true") {
+      setAdmin(true);
+    }
+  };
+
+  useEffect(() => {
+    checkSession();
+  }, [admin]);
 
   return (
     <div
@@ -85,6 +101,21 @@ function Sidebar() {
                 </a>
               </Link>
             </li>
+            {admin && (
+              <li onClick={setShowSideBar}>
+                <Link href="/backend/admin/dashboard">
+                  <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 ">
+                    <CreditCard size={25} weight="duotone" />
+                    <span className="flex-1 ml-3 font-IBMSans whitespace-nowrap">
+                      Dashboard
+                    </span>
+                    <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full ">
+                      Beta
+                    </span>
+                  </a>
+                </Link>
+              </li>
+            )}
           </ul>
           <div
             id="dropdown-cta"
