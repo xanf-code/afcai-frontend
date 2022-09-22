@@ -25,7 +25,11 @@ function AffiliatedCard({ team }) {
           <Image
             className="object-cover opacity-100 hover:opacity-60 transition duration-500 ease-in-out"
             decoding="async"
-            src={team?.teamLogo}
+            src={
+              team?.teamLogo == ""
+                ? "https://res.cloudinary.com/dec2lboba/image/upload/v1663854729/AFCAI-Private-Pics/badge-placeholder_dnq38h.png"
+                : team?.teamLogo
+            }
             alt={team?.teamName}
             width={80}
             height={80}
