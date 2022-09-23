@@ -64,6 +64,19 @@ function All() {
               <AllTeams team={team} />
             </div>
           ))}
+        {data && data.getTeams.data.length === 0 && (
+          <div className="flex flex-col bg-gray-50 rounded-md p-4 my-4">
+            <div className="text-center text-gray-500 font-IBMSans">
+              No teams found
+              <div className="text-center text-gray-500 font-IBMSans">
+                Try searching with different keywords
+                <div className="text-center text-gray-500 font-IBMSans">
+                  Or try searching with different filters
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <div className=" justify-center flex">
         <button

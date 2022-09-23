@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { At, CheckCircle, Kanban, Users } from "phosphor-react";
+import {
+  At,
+  CheckCircle,
+  Kanban,
+  Lightning,
+  Question,
+  Users,
+} from "phosphor-react";
 import { useEffect } from "react";
 
 export default function Dashboard() {
@@ -35,6 +42,24 @@ export default function Dashboard() {
               <div className="flex space-x-2 justify-center">
                 <CheckCircle size={25} weight="duotone" />
                 <h1 className="items-center flex">Verified Teams</h1>
+              </div>
+            </a>
+          </Link>
+        </div>
+        <div className="mt-2 flex space-x-2">
+          <Link href="/backend/admin/general">
+            <a className="w-full items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200">
+              <div className="flex space-x-2 justify-center">
+                <Question size={25} weight="duotone" />
+                <h1 className="items-center flex">General Queries</h1>
+              </div>
+            </a>
+          </Link>
+          <Link href="#">
+            <a className="w-full items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200">
+              <div className="flex space-x-2 justify-center">
+                <Lightning size={25} weight="duotone" />
+                <h1 className="items-center flex">Priority Queries</h1>
               </div>
             </a>
           </Link>

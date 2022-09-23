@@ -98,6 +98,19 @@ function Affiliated() {
             ))}
           {(error || loading) && <Skeleton />}
         </div>
+        {data && data.getVerifiedTeams.docs.length === 0 && (
+          <div className="flex flex-col bg-gray-50 rounded-md p-4 my-4">
+            <div className="text-center text-gray-500 font-IBMSans">
+              No teams found
+              <div className="text-center text-gray-500 font-IBMSans">
+                Try searching with different keywords
+                <div className="text-center text-gray-500 font-IBMSans">
+                  Or try searching with different filters
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="pt-3 justify-center flex">
           <button
             className="py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"

@@ -34,7 +34,7 @@ function AffiliatedCard({ team }) {
             width={80}
             height={80}
             placeholder="blur"
-            blurDataURL={team?.teamLogo}
+            blurDataURL="https://res.cloudinary.com/dec2lboba/image/upload/v1663854729/AFCAI-Private-Pics/badge-placeholder_dnq38h.png"
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = "/shield.png";
@@ -54,7 +54,7 @@ function AffiliatedCard({ team }) {
             <div className="flex">
               <GlobeHemisphereEast size={18} weight="duotone" />
               <h1 className="font-IBMSans text-sm font-semibold text-gray-700 ml-2">
-                {team?.state}
+                {textEllipsis(`${team?.state}`, 20)}
               </h1>
             </div>
             <div className="flex">
@@ -81,18 +81,3 @@ function AffiliatedCard({ team }) {
 }
 
 export default AffiliatedCard;
-
-// association: "Na";
-// description: "Based in Lucknow ";
-// district: "Lucknow ";
-// email: "Sunset@dummymail.com";
-// id: 1;
-// postalCode: "226005";
-// state: "UTTAR PRADESH";
-// teamAbrieviation: "SSFC";
-// teamFounded: "1998";
-// teamLogo: "";
-// teamName: "Sunset fc";
-// teamProfileSlug: "sunset-fc-ssfc";
-// teamReputation: "Non Registed Clubs (Not registed to local District Football Assocation)";
-// teamType: "Non Profit (Trust / Association / Section 8)";
