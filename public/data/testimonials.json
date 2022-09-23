@@ -1,0 +1,53 @@
+{
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Mr. Sanju Pradhan",
+      "personType": "Owner",
+      "club": "Sanju Football Academy",
+      "testimonial": "Afcai reaching out to the clubs and academies to the extreme corner of the country hope with your determination and willingness to provide platform to the clubs and academies you all will surely help in promoting the clubs and academies to the next level."
+    },
+    {
+      "id": "2",
+      "name": "Mr. Kamal Singh Saroha",
+      "personType": "Owner & Co-Founder",
+      "club": "Rajastan United FC",
+      "testimonial": "Rajasthan United is excited to join the AFCAI family & looking forward to devlop the football in our state then in India. We are confident that AFCAI will definately help us in grow in our state & help us in a long term starategies."
+    },
+    {
+      "id": "3",
+      "name": "Mr. Siddhartha Sankar Deka",
+      "personType": "Co-Founder",
+      "club": "Guwahati City FC",
+      "testimonial": "GCFC is pleased to be associated with AFCAI and the club management is looking forward to work with them. This will surely take its football mission in Assam forward and to contribute towards development of the game in India."
+    },
+    {
+      "id": "4",
+      "name": "Mr Stanzin Gilik",
+      "personType": "Coach",
+      "club": "Skalzangling FC, Ladakh",
+      "testimonial": "Its a very good initiative by AFCAI towards the growth of small clubs and acedemies. As AFCAI helping us by their guidence and support which we never got. This is such a great opportunity for all. Really appreciate !"
+    },
+    {
+      "id": "5",
+      "name": "Mr Pawan Kumar Munda",
+      "personType": "Coach",
+      "club": "JSFEC, Jharkhand",
+      "testimonial": "AFCAI is working tirelessly towards promoting the clubs and academies at the grassroots level to make sure we develop the true base of indian football"
+    },
+    {
+      "id": "6",
+      "name": "Mr Dar Danish",
+      "personType": "Founder",
+      "club": "SPGC, Kashmir",
+      "testimonial": "It's so good that a association like AFCAI has come up as we didn't know who to turn to for every little detail / help or query! Now we have our own AFCAI"
+    },
+    {
+      "id": "7",
+      "name": "Mr Shiyeto Wotsa",
+      "personType": "Owner",
+      "club": "Naga United FC, Nagaland",
+      "testimonial": "Many clubs like ours are doing great work at grassroots level, but due to lack of guidance and support, we don't know how to reach the next level. With the friendly experts over at AFCAI supporting us, we are excited about the possibilities ahead!"
+    }
+  ]
+}

@@ -63,15 +63,13 @@ function TeamContent({ data }) {
         <h1 className="font-semibold">Type: </h1>
         <p>{data.teamReputation}</p>
       </div>
-      <div className="flex space-x-4">
-        <div className="flex space-x-1">
-          <h1 className="font-semibold">Senior Mens Team: </h1>
-          <p>{data.seniorMensTeamStatus == "Yes" ? "✅ " : "❎ "}</p>
-        </div>
-        <div className="flex space-x-1">
-          <h1 className="font-semibold">Senior Womens Team: </h1>
-          <p>{data.seniorWomensTeamStatus == "Yes" ? "✅" : "❎"}</p>
-        </div>
+      <div className="flex space-x-2">
+        <h1 className="font-semibold">Senior Mens Team: </h1>
+        <p>{data.seniorMensTeamStatus == "Yes" ? "✅ " : "❎ "}</p>
+      </div>
+      <div className="flex space-x-2">
+        <h1 className="font-semibold">Senior Womens Team: </h1>
+        <p>{data.seniorWomensTeamStatus == "Yes" ? "✅" : "❎"}</p>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">CRS: </h1>
@@ -101,23 +99,33 @@ function TeamContent({ data }) {
       <hr />
       <div className="flex space-x-2">
         <h1 className="font-semibold">Facebook: </h1>
-        <p>{data.socials.facebook == "" ? "❎" : data.socials.facebook}</p>
+        <a className="truncate" href={data.socials.facebook} target="_blank">
+          {data.socials.facebook == "" ? "❎" : data.socials.facebook}
+        </a>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Instagram: </h1>
-        <p>{data.socials.instagram == "" ? "❎" : data.socials.instagram}</p>
+        <a className="truncate" href={data.socials.instagram} target="_blank">
+          {data.socials.instagram == "" ? "❎" : data.socials.instagram}
+        </a>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Twitter: </h1>
-        <p>{data.socials.twitter == "" ? "❎" : data.socials.twitter}</p>
+        <a className="truncate" href={data.socials.twitter} target="_blank">
+          {data.socials.twitter == "" ? "❎" : data.socials.twitter}
+        </a>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Youtube: </h1>
-        <p>{data.socials.youtube == "" ? "❎" : data.socials.youtube}</p>
+        <a className="truncate" href={data.socials.youtube} target="_blank">
+          {data.socials.youtube == "" ? "❎" : data.socials.youtube}
+        </a>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Linkedin: </h1>
-        <p>{data.socials.linkedin == "" ? "❎" : data.socials.linkedin}</p>
+        <a className="truncate" href={data.socials.linkedin} target="_blank">
+          {data.socials.linkedin == "" ? "❎" : data.socials.linkedin}
+        </a>
       </div>
       <hr />
     </div>
