@@ -4,7 +4,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReadMoreReact from "read-more-react";
-import { DELETE_CONTACT_QUERY } from "../../graphql/mutations/DeleteGeneralQuery";
+import { DELETE_CONTACT_QUERY } from "../../graphql/mutations/deleteGeneralQuery";
 
 dayjs.extend(relativeTime);
 
