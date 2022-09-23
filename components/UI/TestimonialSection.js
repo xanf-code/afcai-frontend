@@ -6,15 +6,6 @@ export default function TestimonialSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeSlide, setActiveSlide] = useState({});
 
-  const getJSONData = () => {
-    ky.get("/data/testimonials.json")
-      .json()
-      .then((data) => {
-        setData(data.testimonials);
-        setActiveSlide(data.testimonials[activeIndex]);
-      });
-  };
-
   function HandleNext() {
     if (activeIndex >= data.length - 1) {
       setActiveIndex(0);
@@ -32,8 +23,13 @@ export default function TestimonialSection() {
   }
 
   useEffect(() => {
-    getJSONData();
-  }, [activeSlide]);
+    ky.get("/data/testimonials.json")
+      .json()
+      .then((data) => {
+        setData(data.testimonials);
+        setActiveSlide(data.testimonials[activeIndex]);
+      });
+  }, [activeIndex]);
 
   return (
     <>
