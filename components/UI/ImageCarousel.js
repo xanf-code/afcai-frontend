@@ -26,7 +26,7 @@ export default function ImageCarousel() {
       </div>
       <div>
         <img
-          src="https://res.cloudinary.com/dec2lboba/image/upload/v1663147198/AFCAI-Private-Pics/280060754_507362001072295_1476967136253672350_n_ugvcof.jpg"
+          src="https://res.cloudinary.com/dec2lboba/image/upload/v1664015049/AFCAI-Private-Pics/286503732_688092635583802_1560210147417461503_n_bjx2gv.jpg"
           alt="image"
           className="h-full object-cover"
         />

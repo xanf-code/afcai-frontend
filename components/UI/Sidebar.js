@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import {
   CreditCard,
+  Files,
   House,
   Info,
   Lightbulb,
@@ -97,6 +98,16 @@ function Sidebar() {
                   <UsersThree size={25} weight="duotone" />
                   <span className="flex-1 ml-3 whitespace-nowrap font-IBMSans">
                     Contact
+                  </span>
+                </a>
+              </Link>
+            </li>
+            <li onClick={setShowSideBar}>
+              <Link href="/whitepaper">
+                <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
+                  <Files size={25} weight="duotone" />
+                  <span className="flex-1 ml-3 whitespace-nowrap font-IBMSans">
+                    Whitepaper
                   </span>
                 </a>
               </Link>
