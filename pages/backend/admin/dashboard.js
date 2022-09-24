@@ -72,7 +72,7 @@ export default function Dashboard() {
           >
             <div className="flex space-x-2 justify-center">
               <Kanban size={25} weight="duotone" />
-              <h1 className="items-center flex">Content Management</h1>
+              <h1 className="items-center flex">CMS</h1>
             </div>
           </a>
           <a
