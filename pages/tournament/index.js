@@ -39,7 +39,7 @@ export default function Tournament({ data }) {
                   <a>
                     <div className="bg-gray-100 rounded-md p-5 mb-3 mt-2 md:mb-0 hover:bg-gray-200 transition ease-in-out duration-300">
                       <h1 className="text-xl font-bold">
-                        {attribute.attributes.Tournament_Name}
+                        🏆 {attribute.attributes.Tournament_Name}
                       </h1>
                       <p className="text-gray-500 text-sm">
                         {dayjs(attribute.attributes.publishedAt).fromNow()}
