@@ -30,11 +30,10 @@ export default function Tournament({ data }) {
         <div className="md:grid md:grid-cols-2 md:gap-3 font-IBMSans ">
           {data &&
             data.map((attribute, index) => {
+              const slug_id = attribute.id.toString();
               return (
                 <Link
-                  href={`/tournament/${attribute.id.toString()}?name=${
-                    attribute.attributes.Tournament_Name
-                  }`}
+                  href={`/tournament/${slug_id}/?name=${attribute.attributes.Tournament_Name}`}
                   key={index}
                 >
                   <a>
