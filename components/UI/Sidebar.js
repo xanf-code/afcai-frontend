@@ -8,6 +8,7 @@ import {
   Lightbulb,
   Scroll,
   ShieldChevron,
+  Trophy,
   UsersThree,
 } from "phosphor-react";
 import { useEffect, useState } from "react";
@@ -34,7 +35,7 @@ function Sidebar() {
     <div
       className={`z-50 left-0 md:w-[20%] bg-white p-8 md:p-10 pl-8 text-black fixed h-full ease-in-out duration-300 ${
         showSideBar ? "-translate-x-full " : "translate-x-0"
-      } touch-none`}
+      } touch-none overflow-y-auto`}
     >
       <aside aria-label="Sidebar">
         <div className="overflow-y-auto py-4 px-3 touch-none">
@@ -68,6 +69,16 @@ function Sidebar() {
                   </span>
                   <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full ">
                     Beta
+                  </span>
+                </a>
+              </Link>
+            </li>
+            <li onClick={setShowSideBar}>
+              <Link href="/tournament">
+                <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
+                  <Trophy size={25} weight="duotone" />
+                  <span className="flex-1 ml-3 whitespace-nowrap font-IBMSans">
+                    Tournaments
                   </span>
                 </a>
               </Link>
@@ -112,6 +123,7 @@ function Sidebar() {
                 </a>
               </Link>
             </li>
+
             {admin && (
               <li onClick={setShowSideBar}>
                 <Link href="/backend/admin/dashboard">
