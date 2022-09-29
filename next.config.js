@@ -10,11 +10,11 @@ module.exports = withAxiom({
     CLOUD_NAME: "dec2lboba",
     PRESET_NAME: "AFCAI-Uploads",
     BEARER_TOKEN:
-      "c5681252b0b735f6389c0578cdabbb6880606c52e823e0ee3ba16cc089331d28936b17e3597ffab645c521dd70ca801c10a8588e6f6765fdc498db3782bd42681bcaf6014a6e0169168a3531c71e72ecb236fcb418c28f0c45743f9edfd1bef1e54af47f40b916f68cccea2a66d2fe536dde0e0ac198e9c298e12fed3c84d8a7",
+      "6d1453199d1f60d84d41eebc7aea13e808ba0e4ee4348a7a4fdb063e1ef083ad8193fa836aa1a29ffecc9350967d05640c2e934a068ded7b9f09a34a7b5e779f406db196886d7e3b8217fb9b5b31fd6e2f40f291815fe6ece8dc3e2da748c75d3c3851b0f317913d64a598b4940e5cd81a8d735ba273feaabb84de1dc73eaa40",
 
     CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
     GQL_PUBLIC_URL:
-      //  "http://localhost:5000/",
+      // "http://localhost:5000/",
       "https://afcai.fly.dev/",
   },
   images: {

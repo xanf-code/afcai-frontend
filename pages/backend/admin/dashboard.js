@@ -33,7 +33,7 @@ export default function Dashboard() {
             <a className="w-full items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200">
               <div className="flex space-x-2 justify-center">
                 <Users size={25} weight="duotone" />
-                <h1 className="items-center flex">All Teams</h1>
+                <h1 className="items-center flex">Requested Teams</h1>
               </div>
             </a>
           </Link>

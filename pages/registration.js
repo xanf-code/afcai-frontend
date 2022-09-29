@@ -1023,6 +1023,9 @@ function Registration() {
                 <section
                   className={`space-y-4 ${formStep === 4 ? "block" : "hidden"}`}
                 >
+                  <h1 className="text-gray-500">
+                    Upload Club / Academy Logo *
+                  </h1>
                   {selectedImage ? (
                     <img src={preview} className="h-32 display-block mx-auto" />
                   ) : (
@@ -1069,7 +1072,7 @@ function Registration() {
                         : "Agree and continue"
                     }`}
                     type="submit"
-                    className="mt-6 bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 cursor-pointer"
+                    className={`mt-6 bg-green-600 text-white rounded px-8 py-6 w-full disabled:bg-gray-400 cursor-pointer`}
                   />
                 </section>
               )}

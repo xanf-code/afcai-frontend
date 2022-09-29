@@ -20,7 +20,7 @@ function HeroSection() {
         <h5 className="text-2xl font-normal tracking-tight font-IBMSans">
           Join the Movement Now ⚡️
         </h5>
-        <p className="font-normal text-gray-500 font-IBMSans ">
+        <p className="font-normal text-gray-500 font-IBMSans text-justify">
           AFCAI has been formed to help bridge the gap between the thousands of
           clubs in India and the All India Football Federation (AIFF). We wish
           to work in tandem with the AIFF and intend to help as many existing

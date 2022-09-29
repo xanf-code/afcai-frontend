@@ -1,4 +1,5 @@
 import ky from "ky";
+import { Quotes } from "phosphor-react";
 import { useEffect, useState } from "react";
 
 export default function TestimonialSection() {
@@ -33,11 +34,14 @@ export default function TestimonialSection() {
 
   return (
     <>
-      <h1 className="font-semibold font-IBMSans text-3xl md:text-2xl text-black pt-3 ">
-        Testimonials
-      </h1>
+      <div className="pt-3 flex">
+        <Quotes size={25} weight="duotone" />
+        <h1 className="font-semibold font-IBMSans text-3xl md:text-2xl text-black ml-1.5">
+          Testimonials
+        </h1>
+      </div>
       <hr className="w-full border-1 border-gray-200 pb-2" />
-      <div className="">
+      <div>
         <figure
           key={activeSlide.id}
           className="mx-auto max-w-screen-md text-center"
