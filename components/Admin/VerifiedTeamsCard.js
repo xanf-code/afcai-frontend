@@ -24,9 +24,6 @@ function VerifiedTeamsCard({ data }) {
         <span className="bg-red-100 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
           {data.district}
         </span>
-        <span className="bg-green-100 text-green-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded ">
-          {data.association}
-        </span>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { Fragment, useState } from "react";
-import { DELETE_TEAM } from "../../graphql/mutations/deleteClub";
 import { VERIFY_TEAM } from "../../graphql/mutations/verifyTeam";
 import { Dialog, Transition } from "@headlessui/react";
 import TeamContent from "./TeamContent";
@@ -67,7 +66,7 @@ function VerifiedTeams({ team }) {
                     <img
                       className="h-20"
                       src={
-                        team.teamLogo == "sad"
+                        team.teamLogo == ""
                           ? "https://res.cloudinary.com/dec2lboba/image/upload/v1663854729/AFCAI-Private-Pics/badge-placeholder_dnq38h.png"
                           : team.teamLogo
                       }
