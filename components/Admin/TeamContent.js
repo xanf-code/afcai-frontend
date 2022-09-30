@@ -3,11 +3,11 @@ function TeamContent({ data }) {
     <div className="font-IBMSans space-y-2">
       <div className="flex space-x-2">
         <h1 className="font-semibold">Team ID: </h1>
-        <p>{data.teamID}</p>
+        <p className="font-semibold">{data.teamID}</p>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Description: </h1>
-        <p>{data.description}</p>
+        <p className=" text-justify">{data.description}</p>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Founded: </h1>
@@ -17,7 +17,7 @@ function TeamContent({ data }) {
         <h1 className="font-semibold">Abrieviation: </h1>
         <p>{data.teamAbrieviation}</p>
       </div>
-      <h1 className="text-xl font-QuattroBold">Personal Details: </h1>
+      <h1 className="text-xl font-QuattroBold">Personal: </h1>
       <hr />
       <div className="flex space-x-2">
         <h1 className="font-semibold">Person Type: </h1>
@@ -31,9 +31,9 @@ function TeamContent({ data }) {
         <h1 className="font-semibold">Phone: </h1>
         <p>{data.phone}</p>
       </div>
-      <div className="flex space-x-2">
+      <div className="flex space-x-2 ">
         <h1 className="font-semibold">Email: </h1>
-        <p>{data.email}</p>
+        <p className="break-all">{data.email}</p>
       </div>
       <div className="flex space-x-2">
         <h1 className="font-semibold">Address: </h1>
@@ -92,10 +92,13 @@ function TeamContent({ data }) {
       <div className="flex space-x-2 pb-4">
         <h1 className="font-semibold">Coaches: </h1>
         {data.licensedCoaches.map((data, index) => (
-          <p key={index}>{data} License,</p>
+          <p className="break-all" key={index}>
+            {data}
+          </p>
         ))}
+        <p> Licences</p>
       </div>
-      <h1 className="text-xl font-QuattroBold">Social Media Details: </h1>
+      <h1 className="text-xl font-QuattroBold">Social Media: </h1>
       <hr />
       <div className="flex space-x-2">
         <h1 className="font-semibold">Facebook: </h1>
