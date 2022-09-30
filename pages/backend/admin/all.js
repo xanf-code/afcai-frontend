@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import AllTeams from "../../../components/Admin/AllTeams";
+import VerifiedSkeleton from "../../../components/Admin/VerifiedSkeleton";
 import { GET_TEAMS } from "../../../graphql/queries/GetTeams";
 
 function All() {
@@ -64,6 +65,7 @@ function All() {
               <AllTeams team={team} />
             </div>
           ))}
+        {(error || loading) && <VerifiedSkeleton />}
         {data && data.getTeams.data.length === 0 && (
           <div className="flex flex-col bg-gray-50 rounded-md p-4 my-4">
             <div className="text-center text-gray-500 font-IBMSans">

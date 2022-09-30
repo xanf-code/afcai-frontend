@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import VerifiedSkeleton from "../../../components/Admin/VerifiedSkeleton";
 import VerifiedTeams from "../../../components/Admin/VerifiedTeams";
 import { GET_VERIFIED_TEAMS } from "../../../graphql/queries/GetVerifiedTeams";
 
@@ -90,6 +91,7 @@ function Verified() {
               </a>
             </div>
           ))}
+        {(error || loading) && <VerifiedSkeleton />}
         {data && data.getVerifiedTeams.docs.length === 0 && (
           <div className="flex flex-col bg-gray-50 rounded-md p-4 my-4">
             <div className="text-center text-gray-500 font-IBMSans">
