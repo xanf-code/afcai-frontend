@@ -124,14 +124,14 @@ function VerifiedTeams({ data }) {
                       />
                       <div className="flex flex-col justify-center ml-4 space-y-1">
                         <input
-                          className="text-2xl font-bold leading-6 text-gray-700 font-IBMSans tracking-wide "
+                          className="text-xl font-bold text-gray-700 font-IBMSans ring-1 ring-gray-200 rounded-md flex-1/2"
                           defaultValue={data.teamName}
                           {...register("teamName")}
                         />
                         <h1 className="font-IBMSans text-sm">
                           Website:{" "}
                           <input
-                            className="text-sm font-IBMSans"
+                            className="text-sm font-IBMSans ring-1 ring-gray-200 rounded-md"
                             defaultValue={data.website}
                             {...register("website")}
                           />
@@ -141,6 +141,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.postalCode}
                             {...register("postalCode")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </h1>
                       </div>
@@ -166,6 +167,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.teamFounded}
                             {...register("teamFounded")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2 pb-4">
@@ -203,6 +205,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.personIncharge}
                             {...register("personIncharge")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -210,6 +213,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.phone}
                             {...register("phone")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2 ">
@@ -217,6 +221,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.email}
                             {...register("email")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -224,6 +229,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.postalAddress}
                             {...register("postalAddress")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -245,6 +251,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.association}
                             {...register("association")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -361,6 +368,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.disabledCatering}
                             {...register("disabledCatering")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -387,6 +395,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.facebook}
                             {...register("facebook")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -394,6 +403,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.instagram}
                             {...register("instagram")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -401,6 +411,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.twitter}
                             {...register("twitter")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -408,6 +419,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.youtube}
                             {...register("youtube")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <div className="flex space-x-2">
@@ -415,6 +427,7 @@ function VerifiedTeams({ data }) {
                           <input
                             defaultValue={data.linkedin}
                             {...register("linkedin")}
+                            className="ring-1 ring-gray-200 rounded-md"
                           />
                         </div>
                         <hr />
