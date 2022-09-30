@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 
-const { withAxiom } = require("next-axiom");
+import { withAxiom } from "next-axiom";
 
-module.exports = withAxiom({
+export default withAxiom({
   reactStrictMode: true,
   swcMinify: true,
   env: {
@@ -14,7 +14,7 @@ module.exports = withAxiom({
 
     CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
     GQL_PUBLIC_URL:
-      //"http://localhost:5000/",
+      // "http://localhost:5000/",
       "https://afcai.fly.dev/",
   },
   images: {

@@ -86,7 +86,7 @@ function Verified() {
           data.getVerifiedTeams.docs.slice(0, limit).map((team, index) => (
             <div key={index} className="my-3 md:my-0">
               <a>
-                <VerifiedTeams team={team} />
+                <VerifiedTeams data={team} />
               </a>
             </div>
           ))}
