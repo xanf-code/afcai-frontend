@@ -15,7 +15,7 @@ module.exports = withAxiom({
     CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
     GQL_PUBLIC_URL:
       //"http://localhost:5000/",
-      "https://afcai.fly.dev/",
+      "https://fair-puce-squirrel-suit.cyclic.app/",
   },
   images: {
     domains: [
