@@ -36,3 +36,9 @@ All notable changes to this project will be documented in this file.
 
 - Team ID added to contact form for priority resolution.
 - Migrated back to `fly.io` from `cyclic.app`.
+
+## [1.0.3] - 01-10-2021
+
+### Removed
+
+- Remove Priority Queries and merged it with the general queries.
