@@ -1,6 +1,6 @@
 {
   "name": "afcai-frontend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",

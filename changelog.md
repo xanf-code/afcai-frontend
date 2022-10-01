@@ -35,3 +35,4 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Team ID added to contact form for priority resolution.
+- Migrated back to `fly.io` from `cyclic.app`.
