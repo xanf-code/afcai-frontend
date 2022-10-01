@@ -17,7 +17,7 @@ module.exports = withAxiom({
     GQL_PUBLIC_URL:
       //"http://localhost:5000/",
       //"https://fair-puce-squirrel-suit.cyclic.app/",
-      "afcai.fly.dev",
+      "https://afcai.fly.dev/",
   },
   images: {
     domains: [
