@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/client";
 import debounce from "lodash.debounce";
-import { useRouter } from "next/router";
 import { FileCsv } from "phosphor-react";
 import { useEffect, useState } from "react";
 import VerifiedSkeleton from "../../../components/Admin/VerifiedSkeleton";
@@ -10,9 +9,7 @@ import { ExportToCsv } from "export-to-csv";
 import { DOWNLOAD_CSV } from "../../../graphql/queries/csvDownloads";
 import dayjs from "dayjs";
 
-function Verified() {
-  const router = useRouter();
-
+export default function Verified({ teamID }) {
   const checkSession = () => {
     const accessToken = localStorage.getItem("access");
     if (!accessToken) {
@@ -25,10 +22,10 @@ function Verified() {
   }, []);
 
   const [limit, setLimit] = useState(4);
-  const [field, setField] = useState("teamName");
-  const [value, setValue] = useState("");
+  const [field, setField] = useState("teamID");
+  const [value, setValue] = useState(teamID);
 
-  const setValueQuery = (e) => setValue(e?.target?.value);
+  const setValueQuery = (e) => setValue(e?.target?.value.trim());
   const { loading, error, data } = useQuery(GET_VERIFIED_TEAMS, {
     variables: {
       field,
@@ -98,6 +95,7 @@ function Verified() {
             onChange={(e) => setField(e.target.value)}
           >
             <option value="teamName">Name</option>
+            <option value="teamID">Team ID</option>
             <option value="state">State</option>
             <option value="district">District</option>
             <option value="association">Association</option>
@@ -106,6 +104,7 @@ function Verified() {
           </select>
           <input
             type="search"
+            defaultValue={teamID}
             onChange={debounce(setValueQuery, 700)}
             className="form-control flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             placeholder="Search"
@@ -163,4 +162,12 @@ function Verified() {
   );
 }
 
-export default Verified;
+export async function getServerSideProps(context) {
+  const { teamID } = context.query;
+
+  return {
+    props: {
+      teamID: teamID || "",
+    },
+  };
+}

@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ReadMoreReact from "read-more-react";
@@ -44,6 +45,18 @@ function GeneralQueryCard({ contact }) {
           <div className="text-sm text-gray-500">{contact.queryID}</div>
         </div>
       </div>
+      {contact.teamID != "" && (
+        <div className="flex flex-col mt-2">
+          <a
+            href={`/backend/admin/verified?teamID=${contact.teamID}`}
+            target="__blank"
+          >
+            <div className="font-IBMSans text-red-700 hover:underline underline-offset-2">
+              {contact.teamID}
+            </div>
+          </a>
+        </div>
+      )}
       <div className="flex flex-col mt-4 font-IBMSans">
         <div className="text-lg font-semibold">{contact.subject}</div>
         <div className="text-sm text-gray-500">

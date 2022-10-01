@@ -16,13 +16,15 @@ module.exports = withAxiom({
     CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
     GQL_PUBLIC_URL:
       //"http://localhost:5000/",
-      "https://fair-puce-squirrel-suit.cyclic.app/",
+      //"https://fair-puce-squirrel-suit.cyclic.app/",
+      "afcai.fly.dev",
   },
   images: {
     domains: [
       "res.cloudinary.com",
       "strapi-4h0k.onrender.com",
       "afcai.fly.dev",
+      "fair-puce-squirrel-suit.cyclic.app",
     ],
   },
   redirects: async () => {

@@ -12,7 +12,7 @@ function Affiliated() {
   const [value, setValue] = useState("");
   const [limit, setLimit] = useState(6);
 
-  const setValueQuery = (e) => setValue(e?.target?.value);
+  const setValueQuery = (e) => setValue(e?.target?.value.trim());
   const { loading, error, data, fetchMore } = useQuery(GET_VERIFIED_TEAMS, {
     variables: {
       field,
@@ -111,7 +111,7 @@ function Affiliated() {
           <button
             className="py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 hover:bg-blue-800 rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300"
             onClick={() => {
-              setLimit((prev) => prev + 3);
+              setLimit((prev) => prev + 4);
             }}
           >
             Load More

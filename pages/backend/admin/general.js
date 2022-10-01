@@ -10,7 +10,7 @@ function General() {
   const [value, setValue] = useState("");
   const [limit, setLimit] = useState(4);
 
-  const setValueQuery = (e) => setValue(e?.target?.value);
+  const setValueQuery = (e) => setValue(e?.target?.value.trim());
   const { loading, error, data } = useQuery(GET_GENERAL_QUERIES, {
     variables: {
       value,

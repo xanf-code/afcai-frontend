@@ -24,7 +24,7 @@ function All() {
   const [field, setField] = useState("teamName");
   const [value, setValue] = useState("");
 
-  const setValueQuery = (e) => setValue(e?.target?.value);
+  const setValueQuery = (e) => setValue(e?.target?.value.trim());
 
   const { loading, error, data } = useQuery(GET_TEAMS, {
     variables: {

@@ -24,3 +24,14 @@ All notable changes to this project will be documented in this file.
 
 - Increased affiliated teams view from 4 to 6.
 - Fixed grammar in the testimonial section.
+
+## [1.0.2] - 01-10-2021
+
+### Added
+
+- Added filter by teamID for verified admin section.
+- Admins can now view and interact with Queries with team ID.
+
+### Changed
+
+- Team ID added to contact form for priority resolution.

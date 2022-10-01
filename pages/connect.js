@@ -6,7 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 
 export default function Connect() {
-  const [addContact, { loading, error }] = useMutation(CREATE_CONTACT_QUERY);
+  const [addContact, { loading, error }] = useMutation(CREATE_CONTACT_QUERY, {
+    errorPolicy: "all",
+  });
 
   const {
     register,
@@ -20,14 +22,15 @@ export default function Connect() {
   const onSubmit = (data) => {
     addContact({
       variables: {
+        teamId: data.teamID.trim(),
         name: data.name,
         email: data.email,
         phone: data.phone,
         subject: data.subject,
         message: data.message,
       },
-    }).then(() => {
-      if (!loading && error === undefined) {
+    }).then((data) => {
+      if (data?.data != null) {
         reset(),
           toast.success("We will get back to you soon ⚡️", {
             position: "top-center",
@@ -67,7 +70,21 @@ export default function Connect() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 ">
-              Your Name
+              Team ID (optional)
+            </label>
+            <input
+              {...register("teamID")}
+              className="mb-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              placeholder="Enter your Team ID"
+            />
+            {error &&
+              error.graphQLErrors.map(({ message }, i) => (
+                <p key={i} className="mb-2 text-sm text-red-600">
+                  {message}
+                </p>
+              ))}
+            <label className="block mb-2 text-sm font-medium text-gray-900 ">
+              Your Name *
             </label>
             <input
               {...register("name", {
@@ -85,7 +102,7 @@ export default function Connect() {
               </p>
             )}
             <label className="block mb-2 text-sm font-medium text-gray-900 ">
-              Your email
+              Your email *
             </label>
             <input
               {...register("email", {
@@ -107,7 +124,7 @@ export default function Connect() {
               </p>
             )}
             <label className="block mb-2 text-sm font-medium text-gray-900 ">
-              Your Phone Number
+              Your Phone Number *
             </label>
             <input
               {...register("phone", {
@@ -131,7 +148,7 @@ export default function Connect() {
           </div>
           <div>
             <label className="block mb-2 text-sm font-medium text-gray-900 ">
-              Subject
+              Subject *
             </label>
             <input
               {...register("subject", {
@@ -151,7 +168,7 @@ export default function Connect() {
           </div>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 ">
-              Your message
+              Your message *
             </label>
             <textarea
               {...register("message", {
