@@ -1,10 +1,14 @@
 import { useQuery } from "@apollo/client";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/router";
+import { FileCsv } from "phosphor-react";
 import { useEffect, useState } from "react";
 import VerifiedSkeleton from "../../../components/Admin/VerifiedSkeleton";
 import VerifiedTeams from "../../../components/Admin/VerifiedTeams";
 import { GET_VERIFIED_TEAMS } from "../../../graphql/queries/GetVerifiedTeams";
+import { ExportToCsv } from "export-to-csv";
+import { DOWNLOAD_CSV } from "../../../graphql/queries/csvDownloads";
+import dayjs from "dayjs";
 
 function Verified() {
   const router = useRouter();
@@ -26,6 +30,14 @@ function Verified() {
 
   const setValueQuery = (e) => setValue(e?.target?.value);
   const { loading, error, data } = useQuery(GET_VERIFIED_TEAMS, {
+    variables: {
+      field,
+      value,
+      limit: null,
+    },
+  });
+
+  const { data: csvData } = useQuery(DOWNLOAD_CSV, {
     variables: {
       field,
       value,
@@ -58,6 +70,24 @@ function Verified() {
   //   });
   // };
 
+  const options = {
+    fieldSeparator: ",",
+    quoteStrings: '"',
+    decimalSeparator: ".",
+    showLabels: true,
+    showTitle: true,
+    useTextFile: false,
+    useBom: true,
+    useKeysAsHeaders: true,
+    title: `Affiliated Teams ${dayjs().format("DD-MM-YYYY")}`,
+    filename: `${dayjs().date()}-${dayjs().month() + 1}-${dayjs().year()}`,
+  };
+
+  const downloadCSV = () => {
+    const csvExporter = new ExportToCsv(options);
+    csvExporter.generateCsv(csvData?.getVerifiedTeams?.docs);
+  };
+
   return (
     <div>
       <div className="max-w-2xl md:mx-auto md:mt-6 m-5">
@@ -82,6 +112,19 @@ function Verified() {
             aria-label="Search"
             aria-describedby="button-addon2"
           />
+        </div>
+        <div className="flex justify-end">
+          {data && data.getVerifiedTeams && (
+            <div
+              onClick={() => downloadCSV()}
+              className="flex items-center space-x-1.5 bg-gray-100 rounded-md px-3 py-2 hover:bg-gray-200 transition ease-in-out duration-300 cursor-pointer"
+            >
+              <FileCsv size={20} weight="duotone" />
+              <span className="text-sm font-IBMSans font-semibold">
+                Generate CSV
+              </span>
+            </div>
+          )}
         </div>
         {data &&
           data.getVerifiedTeams.docs.slice(0, limit).map((team, index) => (

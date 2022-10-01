@@ -393,7 +393,7 @@ function VerifiedTeams({ data }) {
                         <div className="flex space-x-2">
                           <h1 className="font-semibold">Facebook: </h1>
                           <input
-                            defaultValue={data.facebook}
+                            defaultValue={data.socials.facebook}
                             {...register("facebook")}
                             className="ring-1 ring-gray-200 rounded-md"
                           />
@@ -401,7 +401,7 @@ function VerifiedTeams({ data }) {
                         <div className="flex space-x-2">
                           <h1 className="font-semibold">Instagram: </h1>
                           <input
-                            defaultValue={data.instagram}
+                            defaultValue={data.socials.instagram}
                             {...register("instagram")}
                             className="ring-1 ring-gray-200 rounded-md"
                           />
@@ -409,7 +409,7 @@ function VerifiedTeams({ data }) {
                         <div className="flex space-x-2">
                           <h1 className="font-semibold">Twitter: </h1>
                           <input
-                            defaultValue={data.twitter}
+                            defaultValue={data.socials.twitter}
                             {...register("twitter")}
                             className="ring-1 ring-gray-200 rounded-md"
                           />
@@ -417,7 +417,7 @@ function VerifiedTeams({ data }) {
                         <div className="flex space-x-2">
                           <h1 className="font-semibold">Youtube: </h1>
                           <input
-                            defaultValue={data.youtube}
+                            defaultValue={data.socials.youtube}
                             {...register("youtube")}
                             className="ring-1 ring-gray-200 rounded-md"
                           />
@@ -425,7 +425,7 @@ function VerifiedTeams({ data }) {
                         <div className="flex space-x-2">
                           <h1 className="font-semibold">Linkedin: </h1>
                           <input
-                            defaultValue={data.linkedin}
+                            defaultValue={data.socials.linkedin}
                             {...register("linkedin")}
                             className="ring-1 ring-gray-200 rounded-md"
                           />

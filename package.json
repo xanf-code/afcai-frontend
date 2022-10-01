@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.0",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",
+    "export-to-csv": "^0.2.1",
     "graphql": "^16.6.0",
     "ky": "^0.31.3",
     "lodash.debounce": "^4.0.8",

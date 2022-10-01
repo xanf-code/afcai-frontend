@@ -89,11 +89,7 @@ function Affiliated() {
           {data &&
             data.getVerifiedTeams.docs.slice(0, limit).map((team, index) => (
               <div key={index} className="my-3 md:my-0">
-                <Link href={"#"}>
-                  <a>
-                    <AffiliatedCard team={team} />
-                  </a>
-                </Link>
+                <AffiliatedCard team={team} />
               </div>
             ))}
           {(error || loading) && <Skeleton />}

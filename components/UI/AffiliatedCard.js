@@ -1,5 +1,14 @@
 import Image from "next/image";
-import { Flag, GlobeHemisphereEast, MapPin } from "phosphor-react";
+import {
+  FacebookLogo,
+  Flag,
+  GlobeHemisphereEast,
+  InstagramLogo,
+  LinkedinLogo,
+  MapPin,
+  TwitterLogo,
+  YoutubeLogo,
+} from "phosphor-react";
 
 function AffiliatedCard({ team }) {
   function textEllipsis(
@@ -66,12 +75,41 @@ function AffiliatedCard({ team }) {
           </div>
         </div>
         <div>
-          <div className="flex space-x-1 items-center">
-            <MapPin size={18} weight="duotone" />
-            <div className="bg-white p-1 px-1 inline-block rounded-md">
-              <h1 className="tracking-wide font-IBMSans text-xs">
-                {team?.postalCode}
-              </h1>
+          <div className="flex justify-between">
+            <div className="flex items-center space-x-1">
+              <MapPin size={18} weight="duotone" />
+              <div className="bg-white p-1 px-1 inline-block rounded-md">
+                <h1 className="tracking-wide font-IBMSans text-xs">
+                  {team?.postalCode}
+                </h1>
+              </div>
+            </div>
+            <div className="flex space-x-2">
+              {team?.socials.facebook != "" && (
+                <a href={team?.socials.facebook} target="__blank">
+                  <FacebookLogo size={18} weight="duotone" />
+                </a>
+              )}
+              {team?.socials.instagram != "" && (
+                <a href={team?.socials.instagram} target="__blank">
+                  <InstagramLogo size={18} weight="duotone" />
+                </a>
+              )}
+              {team?.socials.youtube != "" && (
+                <a href={team?.socials.youtube} target="__blank">
+                  <YoutubeLogo size={18} weight="duotone" />
+                </a>
+              )}
+              {team?.socials.twitter != "" && (
+                <a href={team?.socials.twitter} target="__blank">
+                  <TwitterLogo size={18} weight="duotone" />
+                </a>
+              )}
+              {team?.socials.linkedin != "" && (
+                <a href={team?.socials.linkedin} target="__blank">
+                  <LinkedinLogo size={18} weight="duotone" />
+                </a>
+              )}
             </div>
           </div>
         </div>
