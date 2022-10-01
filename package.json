@@ -1,6 +1,6 @@
 {
   "name": "afcai-frontend",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
@@ -24,6 +24,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.35.0",
+    "react-markdown": "^8.0.3",
     "react-player": "^2.11.0",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.8",

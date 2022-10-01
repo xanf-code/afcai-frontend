@@ -42,3 +42,10 @@ All notable changes to this project will be documented in this file.
 ### Removed
 
 - Remove Priority Queries and merged it with the general queries.
+
+## [1.0.4] - 01-10-2021
+
+### Added
+
+- Moved changelog to public folder.
+- Changelog is now a private page, only accessible through url.
