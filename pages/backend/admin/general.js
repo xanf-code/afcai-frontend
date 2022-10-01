@@ -43,8 +43,11 @@ function General() {
           />
         </div>
         {data &&
-          data.getContacts.slice(0, limit).map((contact) => (
-            <div className="flex flex-col bg-gray-50 rounded-md p-4 my-4">
+          data.getContacts.slice(0, limit).map((contact, index) => (
+            <div
+              key={index}
+              className="flex flex-col bg-gray-50 rounded-md p-4 my-4"
+            >
               <GeneralQueryCard contact={contact} />
             </div>
           ))}

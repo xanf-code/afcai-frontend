@@ -5,7 +5,6 @@ export const REGISTER_MUTATION = gql`
     $teamName: String!
     $description: String!
     $teamLogo: String!
-    $teamAbrieviation: String!
     $association: String!
     $email: String!
     $phone: String!
@@ -33,7 +32,6 @@ export const REGISTER_MUTATION = gql`
       teamName: $teamName
       description: $description
       teamLogo: $teamLogo
-      teamAbrieviation: $teamAbrieviation
       association: $association
       email: $email
       phone: $phone
@@ -61,7 +59,6 @@ export const REGISTER_MUTATION = gql`
       teamID
       description
       isVerified
-      teamAbrieviation
       createdAt
       teamLogo
       association

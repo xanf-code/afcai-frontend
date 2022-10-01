@@ -82,7 +82,6 @@ function Registration() {
           youtube: formValue.youtube,
           linkedin: formValue.linkedin,
         },
-        teamAbrieviation: formValue.teamAbrieviation,
         personIncharge: formValue.personIncharge,
         personType: formValue.personType,
         postalCode: formValue.postalCode,
@@ -230,27 +229,6 @@ function Registration() {
                     {errors.teamName && (
                       <p className="text-sm text-red-600 mt-2">
                         {errors.teamName?.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <h1 className="text-gray-500">
-                      Please Enter the Team/Academy/Club Abrieviation *
-                    </h1>
-                    <input
-                      className="w-full border border-gray-300 rounded-md p-2"
-                      {...register("teamAbrieviation", {
-                        required: {
-                          value: true,
-                          message: "Team/Academy/Club abrieviation is required",
-                        },
-                      })}
-                      name="teamAbrieviation"
-                      placeholder="Academy/Team Abrieviation"
-                    />
-                    {errors.teamAbrieviation && (
-                      <p className="text-sm text-red-600 mt-2">
-                        {errors.teamAbrieviation?.message}
                       </p>
                     )}
                   </div>

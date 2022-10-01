@@ -10,7 +10,7 @@ import Skeleton from "../components/UI/Skeleton";
 function Affiliated() {
   const [field, setField] = useState("teamName");
   const [value, setValue] = useState("");
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(6);
 
   const setValueQuery = (e) => setValue(e?.target?.value);
   const { loading, error, data, fetchMore } = useQuery(GET_VERIFIED_TEAMS, {
