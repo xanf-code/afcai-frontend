@@ -20,7 +20,7 @@ import {
 const STEPS_AMOUNT = 6;
 
 function Registration() {
-  const [formStep, setFormStep] = useState(1);
+  const [formStep, setFormStep] = useState(0);
   const [youthTeamToggle, setYouthTeamToggle] = useState(false);
   const [licensedCoachToggle, setlicensedCoachToggle] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
