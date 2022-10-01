@@ -20,7 +20,7 @@ import {
 const STEPS_AMOUNT = 6;
 
 function Registration() {
-  const [formStep, setFormStep] = useState(0);
+  const [formStep, setFormStep] = useState(1);
   const [youthTeamToggle, setYouthTeamToggle] = useState(false);
   const [licensedCoachToggle, setlicensedCoachToggle] = useState(false);
   const [selectedImage, setSelectedImage] = useState();
@@ -526,7 +526,10 @@ function Registration() {
                   </div>
                   <div className="space-y-2">
                     <h1 className="text-gray-500">
-                      Add your Social Media Links (Optional)
+                      Add your Social Media Links (Optional) <br />
+                      <span className="text-sm text-red-600 font-medium">
+                        Enter Full URL (eg: https://www.facebook.com/username)
+                      </span>
                     </h1>
                     <div className="flex">
                       {/* <Image
