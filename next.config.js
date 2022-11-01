@@ -14,7 +14,7 @@ module.exports = withAxiom({
       // "6d1453199d1f60d84d41eebc7aea13e808ba0e4ee4348a7a4fdb063e1ef083ad8193fa836aa1a29ffecc9350967d05640c2e934a068ded7b9f09a34a7b5e779f406db196886d7e3b8217fb9b5b31fd6e2f40f291815fe6ece8dc3e2da748c75d3c3851b0f317913d64a598b4940e5cd81a8d735ba273feaabb84de1dc73eaa40",
       "9659d0b03a0936b8f7ee210a0f358d26d35db3b5b02fdf9407eb6b83bca54b5ebf55a634147502e4120998148176c46e51921d62811ba81bfbecca5973c53fdca1fb631e719d63048db17ab3ecc0e64a082e5cc6111559caf7df3f70554360477bcc4f823a5a3521e1424105db9db09faabfa110cce2f64967dbf2db4b1f3734"
 
-    CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com",
+    CMS_PUBLIC_URL: "https://strapi-4h0k.onrender.com/",
     GQL_PUBLIC_URL:
       //"http://localhost:5000/",
       //"https://fair-puce-squirrel-suit.cyclic.app/",
