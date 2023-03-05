@@ -1,7 +1,5 @@
 import ImageCarousel from "../components/UI/ImageCarousel";
-import ky from "ky";
 import HeroSection from "../components/UI/HeroSection";
-import HomeBlogSection from "../components/UI/HomeBlogSection";
 import HomeMeta from "../components/Meta/HomeMeta";
 import TestimonialSection from "../components/UI/TestimonialSection";
 
@@ -17,27 +15,7 @@ export default function Home() {
         <div className="bg-gray-50 p-5 rounded-md">
           <TestimonialSection />
         </div>
-        {/* <HomeBlogSection data={data} /> */}
       </div>
     </>
   );
 }
-
-// export async function getServerSideProps() {
-//   const { data } = await ky
-//     .get(
-//       `${process.env.CMS_PUBLIC_URL}/api/posts?sort=publishedAt:desc&pagination[limit]=9&populate=*`,
-//       {
-//         headers: {
-//           Accept: "application/json",
-//           Authorization: `Bearer ${process.env.BEARER_TOKEN}`,
-//         },
-//       }
-//     )
-//     .json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
