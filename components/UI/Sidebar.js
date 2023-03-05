@@ -73,7 +73,7 @@ function Sidebar() {
                 </a>
               </Link>
             </li>
-            <li onClick={setShowSideBar}>
+            {/* <li onClick={setShowSideBar}>
               <Link href="/tournament">
                 <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100">
                   <Trophy size={25} weight="duotone" />
@@ -82,7 +82,7 @@ function Sidebar() {
                   </span>
                 </a>
               </Link>
-            </li>
+            </li> */}
             <li onClick={setShowSideBar}>
               <Link href="/about">
                 <a className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg  hover:bg-gray-100 ">
