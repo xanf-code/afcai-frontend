@@ -1,20 +1,18 @@
 import create from "zustand";
-import ky from "ky";
 
 const useImageStore = create((set, get) => ({
   imageSrc: "",
-  getLogo: (formData) => {
+  getLogo: async (formData) => {
     try {
-      ky.post(
+      const response = await fetch(
         `https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`,
         {
+          method: "POST",
           body: formData,
         }
-      )
-        .json()
-        .then((data) => {
-          set({ imageSrc: data.secure_url });
-        });
+      );
+      const data = await response.json();
+      set({ imageSrc: data.secure_url });
     } catch (error) {
       console.log(error);
     }

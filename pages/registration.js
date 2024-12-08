@@ -30,8 +30,8 @@ function Registration() {
   const [districtsData, setDistrictsData] = useState([]);
 
   const getJSONData = () => {
-    ky.get("/data/states.json")
-      .json()
+    fetch("/data/states.json")
+      .then((response) => response.json())
       .then((data) => {
         setStatesData(data.states);
       });

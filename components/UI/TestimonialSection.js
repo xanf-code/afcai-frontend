@@ -1,4 +1,3 @@
-import ky from "ky";
 import { Quotes } from "phosphor-react";
 import { useEffect, useState } from "react";
 
@@ -24,8 +23,8 @@ export default function TestimonialSection() {
   }
 
   useEffect(() => {
-    ky.get("/data/testimonials.json")
-      .json()
+    fetch("/data/testimonials.json")
+      .then((response) => response.json())
       .then((data) => {
         setData(data.testimonials);
         setActiveSlide(data.testimonials[activeIndex]);
